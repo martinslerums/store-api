@@ -1,131 +1,250 @@
 [
   {
-    "name": "accent chair",
-    "price": 25,
-    "company": "marcos",
-    "rating": 4
-  },
-  {
-    "name": "albany sectional",
-    "price": 109,
-    "company": "liddy",
-    "rating": 5
-  },
-  {
-    "name": "albany table",
-    "price": 309,
-    "company": "liddy",
-    "rating": 4.9
-  },
-  {
-    "name": "armchair",
-    "price": 125,
-    "company": "marcos",
-    "rating": 4.8
-  },
-  {
-    "name": "bar stool",
-    "price": 40,
-    "company": "liddy",
-    "rating": 4.6
-  },
-  {
-    "name": "dining table",
-    "price": 42,
+    "name": "angersby",
+    "price": 179,
+    "description": "Divvietīgs dīvāns, Knisa gaiši pelēkā krāsā",
     "company": "ikea",
-    "rating": 4.55
+    "type": "sofa",
+    "rating": 4.2,
+    "image": "/images/sofas/ikea-angersby.jpg"
   },
   {
-    "name": "emperor bed",
-    "price": 23,
-    "company": "ikea"
+    "name": "glostad",
+    "price": 130,
+    "description": "Divvietīgs dīvāns, Knisa klasiski zila",
+    "company": "ikea",
+    "type": "sofa",
+    "rating": 4,
+    "image": "/images/sofas/ikea-glostad.jpg"
   },
   {
-    "name": "entertainment center",
-    "price": 59,
+    "name": "strandmon",
+    "price": 459,
+    "description": "Trīsvietīgs dīvāns, Nordvalla tumši pelēkā krāsā",
+    "company": "ikea",
+    "type": "sofa",
+    "rating": 4.5,
+    "image": "/images/sofas/ikea-strandmon.jpg"
+  },
+  {
+    "name": "hyltarp",
+    "price": 539,
+    "description": "Divvietīgs dīvāns, Gransel pelēkbrūnā krāsā",
+    "company": "ikea",
+    "type": "sofa",
+    "rating": 4.5,
+    "image": "/images/sofas/ikea-hyltarp.jpg"
+  },
+  {
+    "name": "linanas",
+    "price": 169,
+    "description": "Divvietīgs dīvāns, Vissle smilškrāsā",
+    "company": "ikea",
+    "type": "sofa",
+    "rating": 4.2,
+    "image": "/images/sofas/ikea-linanas.jpg"
+  },
+  {
+    "name": "rocksjon",
+    "price": 239,
+    "description": "Divvietīgs dīvāns, Kilanda gaišā smilškrāsā",
+    "company": "ikea",
+    "type": "sofa",
+    "rating": 4.2,
+    "image": "/images/sofas/ikea-rocksjon.jpg"
+  },
+  {
+    "name": "soderhamn",
+    "price": 530,
+    "description": "divvietīgs dīvāns ar zvilni, Fridtuna gaišā smilškrāsā",
+    "company": "ikea",
+    "type": "sofa",
+    "rating": 4.8,
+    "image": "/images/sofas/ikea-soderhamn.jpg"
+  },
+  {
+    "name": "vimle",
+    "price": 2843,
     "featured": true,
-    "company": "caressa"
+    "description": "sešvietīgs U formas dīvāns, ar vaļēju galu/Grann/Bomstad melnā krāsā",
+    "company": "ikea",
+    "type": "sofa",
+    "rating": 5,
+    "image": "/images/sofas/ikea-vimle.jpg"
   },
   {
-    "name": "high-back bench",
-    "price": 39,
+    "name": "vimle",
+    "price": 589,
     "featured": true,
-    "company": "ikea"
-  },
-
-  {
-    "name": "leather sofa",
-    "price": 99,
-    "company": "caressa"
+    "description": "atpūtas krēsls, Grann/Bomstad melnā krāsā",
+    "company": "ikea",
+    "type": "chair",
+    "rating": 4.9,
+    "image": "images/chairs/chair-vimle.jpg"
   },
   {
-    "name": "modern bookshelf",
-    "price": 31,
+    "name": "rocksjon",
+    "price": 159,
+    "description": "atpūtas krēsls, Kilanda gaišā smilškrāsā",
+    "company": "ikea",
+    "type": "chair",
+    "rating": 4.2,
+    "image": "images/chairs/chair-rocksjon.jpg"
+  },
+  {
+    "name": "remsta",
+    "price": 189,
     "featured": true,
-    "company": "caressa"
+    "description": "atpūtas krēsls, Djuparp tumši zilzaļā krāsā",
+    "company": "ikea",
+    "type": "chair",
+    "rating": 4.8,
+    "image": "images/chairs/chair-remsta.jpg"
   },
   {
-    "name": "modern poster",
-    "price": 30,
-    "company": "liddy"
+    "name": "poang",
+    "price": 135,
+    "description": "šūpuļkrēsls, balti beicēts ozolkoka finieris/Gunnared tumši pelēkā krāsā",
+    "company": "ikea",
+    "type": "chair",
+    "rating": 4.5,
+    "image": "images/chairs/chair-poang.jpg"
   },
   {
-    "name": "shelf",
-    "price": 30,
-    "company": "ikea"
+    "name": "onnestad",
+    "price": 89,
+    "description": "atpūtas krēsls, Katorp smilškrāsā",
+    "company": "ikea",
+    "type": "chair",
+    "rating": 4,
+    "image": "images/chairs/chair-onnestad.jpg"
   },
   {
-    "name": "simple chair",
-    "price": 109,
-    "company": "liddy"
-  },
-  {
-    "name": "sofa set",
-    "price": 129,
-    "company": "marcos"
-  },
-  {
-    "name": "suede armchair",
-    "price": 15,
-    "company": "caressa"
-  },
-  {
-    "name": "utopia sofa",
-    "price": 79,
+    "name": "muren",
+    "price": 269,
     "featured": true,
-    "company": "liddy"
+    "description": "krēsls ar regulējamu atzveltni, Remmarn gaiši pelēkā krāsā",
+    "company": "ikea",
+    "type": "chair",
+    "rating": 4.9,
+    "image": "images/chairs/chair-muren.jpg"
   },
   {
-    "name": "vase table",
-    "price": 120,
+    "name": "ekero",
+    "price": 139,
+    "description": "atpūtas krēsls, Skiftebo dzeltenā krāsā",
+    "company": "ikea",
+    "type": "chair",
+    "rating": 4.2,
+    "image": "images/chairs/chair-ekero.jpg"
+  },
+  {
+    "name": "dyvlinge",
+    "price": 169,
+    "description": "grozāmais atpūtas krēsls, Kelinge melnā krāsā",
+    "company": "ikea",
+    "type": "chair",
+    "rating": 4.8,
+    "image": "images/chairs/chair-dyvlinge.jpg"
+  },
+  {
+    "name": "arsunda",
+    "price": 55,
+    "description": "atpūtas krēsls, Knisa gaiši pelēkā krāsā",
+    "company": "ikea",
+    "type": "chair",
+    "rating": 4.8,
+    "image": "images/chairs/chair-arsunda.jpg"
+  },
+  {
+    "name": "vedbo",
+    "price": 449,
+    "description": "ēdamgalds, baltā krāsā, 160x95 cm",
+    "company": "ikea",
+    "type": "table",
+    "rating": 4.7,
+    "image": "images/tables/table-vedbo.jpg"
+  },
+  {
+    "name": "torsby",
+    "price": 339,
     "featured": true,
-    "company": "marcos"
+    "description": "galds, hromēts/baltā krāsā keramika, 135x85 cm",
+    "company": "ikea",
+    "type": "table",
+    "rating": 4.4,
+    "image": "images/tables/table-torsby.jpg"
   },
   {
-    "name": "wooden bed",
-    "price": 25,
-    "company": "ikea"
+    "name": "mariedamm",
+    "price": 199,
+    "description": "galds, melnā krāsā marmora imitācija, 105 cm",
+    "company": "ikea",
+    "type": "table",
+    "rating": 4.8,
+    "image": "images/tables/table-mariedamm.jpg"
   },
   {
-    "name": "wooden desk",
-    "price": 15,
-    "company": "ikea"
+    "name": "lack",
+    "price": 35,
+    "description": "kafijas galdiņš, balti beicēta ozolkoka imitācija, 118x78 cm",
+    "company": "ikea",
+    "type": "table",
+    "rating": 4.8,
+    "image": "images/tables/table-lack.jpg"
   },
   {
-    "name": "wooden desk",
-    "price": 40,
-    "company": "ikea"
+    "name": "lisabo",
+    "price": 179,
+    "description": "galds, oškoka finieris, 140x78 cm",
+    "company": "ikea",
+    "type": "table",
+    "rating": 4.4,
+    "image": "images/tables/table-lisabo.jpg"
   },
   {
-    "name": "wooden table",
-    "price": 23,
-    "featured": true,
-    "company": "caressa"
+    "name": "idanas",
+    "price": 189,
+    "description": "kafijas galdiņš, tumši brūnā krāsā beicēts, 80x80 cm",
+    "company": "ikea",
+    "type": "table",
+    "rating": 4.5,
+    "image": "images/tables/table-idanas.jpg"
   },
   {
-    "name": "a first wooden table",
-    "price": 23,
-    "featured": true,
-    "company": "caressa"
+    "name": "holmerud",
+    "price": 50,
+    "description": "kafijas galdiņš, tumši brūnā krāsā, 90x55 cm",
+    "company": "ikea",
+    "type": "table",
+    "rating": 4.5,
+    "image": "images/tables/table-holmerud.jpg"
+  },
+  {
+    "name": "hemnes",
+    "price": 119,
+    "description": "kafijas galdiņš, balta beice, 90x90 cm",
+    "company": "ikea",
+    "type": "table",
+    "rating": 4.4,
+    "image": "images/tables/table-hemnes.jpg"
+  },
+  {
+    "name": "ekedalen",
+    "price": 199,
+    "description": "izvelkamais galds, baltā krāsā, 120/180x80 cm",
+    "company": "ikea",
+    "type": "table",
+    "rating": 4.4,
+    "image": "images/tables/table-ekedalen.jpg"
+  },
+  {
+    "name": "arkelstorp",
+    "price": 169,
+    "description": "kafijas galdiņš, melnā krāsā, 65x140x52 cm",
+    "company": "ikea",
+    "type": "table",
+    "rating": 4.4,
+    "image": "images/tables/table-arkelstorp.jpg"
   }
 ]
