@@ -1,6 +1,7 @@
-import 'express-async-errors'; 
+import "express-async-errors";
 
 import dotenv from "dotenv";
+import cors from "cors";
 import express from "express";
 
 import connectDB from "./services/connect.js";
@@ -13,14 +14,14 @@ import errorHandlerMiddleware from "./middleware/error-handler.js";
 dotenv.config();
 const app = express();
 
-
+app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send('<h1> STORE API </h1><a href="/api/products">products route</a>');
 });
 
-app.use('/api/products', productsRouter);
+app.use("/api/products", productsRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
