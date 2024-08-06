@@ -6,7 +6,7 @@ import express from "express";
 
 import connectDB from "./services/connect.js";
 
-import productsRouter from "./routes/products.js";
+import routes from "./routes/products.js";
 
 import notFoundMiddleware from "./middleware/not-found.js";
 import errorHandlerMiddleware from "./middleware/error-handler.js";
@@ -21,7 +21,7 @@ app.get("/", (req, res) => {
   res.send('<h1> STORE API </h1><a href="/api/products">products route</a>');
 });
 
-app.use("/api/products", productsRouter);
+app.use("/api", routes);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);

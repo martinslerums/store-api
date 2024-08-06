@@ -1,9 +1,19 @@
 import express from "express";
 import { getAllProducts, getAllProductsStatic } from "../controllers/products.js";
+import login from "../controllers/login.js";
+import register from "../controllers/register.js";
 
-const productsRouter = express.Router();
 
-productsRouter.route("/").get(getAllProducts);
-productsRouter.route("/static").get(getAllProductsStatic);
+const routes = express.Router();
 
-export default productsRouter;
+/*Products*/
+routes.route("/products").get(getAllProducts);
+routes.route("/static").get(getAllProductsStatic);
+
+/*Account*/
+routes.route("/login").get(login);
+routes.route("/register").post(register);
+
+
+
+export default routes;
