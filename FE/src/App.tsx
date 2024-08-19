@@ -3,6 +3,7 @@ import Home from './pages/Home';
 import ProductsTest from './pages/ProductsTest';
 import Products from './pages/Products';
 import NotFound from './pages/NotFound';
+import Register from './pages/Register';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <br />
         <Link to='/productstest'>Productstest</Link>
         <br />
+        <Link to='/register'>REGISTER</Link>
         <br />
         <br />
       </nav>
@@ -23,6 +25,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/productstest" element={<ProductsTest />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Products />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

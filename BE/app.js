@@ -6,12 +6,13 @@ import express from "express";
 
 import connectDB from "./services/connect.js";
 
-import routes from "./routes/products.js";
+import routes from "./routes/index.js";
 
 import notFoundMiddleware from "./middleware/not-found.js";
 import errorHandlerMiddleware from "./middleware/error-handler.js";
 
 dotenv.config();
+
 const app = express();
 
 app.use(cors());
