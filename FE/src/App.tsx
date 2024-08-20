@@ -4,6 +4,8 @@ import ProductsTest from './pages/ProductsTest';
 import Products from './pages/Products';
 import NotFound from './pages/NotFound';
 import Register from './pages/Register';
+import LoginPage from './pages/Login';
+import DashboardTest from './components/DashboardTest';
 
 
 function App() {
@@ -18,6 +20,7 @@ function App() {
         <br />
         <Link to='/register'>REGISTER</Link>
         <br />
+        <Link to='/login'>LOGIN</Link>
         <br />
       </nav>
 
@@ -26,7 +29,8 @@ function App() {
         <Route path="/productstest" element={<ProductsTest />} />
         <Route path="/products" element={<Products />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Products />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/dashboard" element={<DashboardTest />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

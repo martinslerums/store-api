@@ -1,35 +1,54 @@
-import { FormEvent, useState } from 'react';
-import axios from 'axios';
+import { FormEvent, useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [error, setError] = useState('');
+
+  const navigate = useNavigate()
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [successMessage, setSuccessMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
 
     if (password !== confirmPassword) {
-      setError('Passwords do not match');
+      setError("Passwords do not match");
       return;
     }
 
     setIsLoading(true);
-    setError('');
-    setSuccessMessage('');
+    setError("");
+    setSuccessMessage("");
 
     try {
-      const response = await axios.post('http://localhost:3001/api/auth/register', { email, password });
-      setSuccessMessage(response.data.msg);
+      const res = await axios.post("http://localhost:3001/api/auth/register", { email, password });
+      console.log("Full response:", res);
+      console.log("Response data:", res.data);
+      setSuccessMessage(res.data.msg);
+
+      setEmail('');
+      setPassword('');
+      setConfirmPassword('');
+
+      navigate("/login")
     } catch (err) {
-      setError(err.response?.data?.msg || 'Registration failed');
+      if (axios.isAxiosError(err) && err.response) {
+        setError(err.response.data.message || "Registration failed.");
+      } else {
+        setError("An unexpected error occurred.");
+      }
+      console.error(err);
     } finally {
       setIsLoading(false);
     }
   };
+  
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
@@ -37,7 +56,10 @@ const RegisterForm = () => {
         <h2 className="text-2xl font-bold text-center mb-6">Register</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">
+            <label
+              htmlFor="email"
+              className="block text-gray-700 text-sm font-bold mb-2"
+            >
               Email
             </label>
             <input
@@ -51,7 +73,10 @@ const RegisterForm = () => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-2">
+            <label
+              htmlFor="password"
+              className="block text-gray-700 text-sm font-bold mb-2"
+            >
               Password
             </label>
             <input
@@ -65,7 +90,10 @@ const RegisterForm = () => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="confirm-password" className="block text-gray-700 text-sm font-bold mb-2">
+            <label
+              htmlFor="confirm-password"
+              className="block text-gray-700 text-sm font-bold mb-2"
+            >
               Confirm Password
             </label>
             <input
@@ -79,14 +107,16 @@ const RegisterForm = () => {
             />
           </div>
           {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
-          {successMessage && <p className="text-green-500 text-sm mb-4">{successMessage}</p>}
+          {successMessage && (
+            <p className="text-green-500 text-sm mb-4">{successMessage}</p>
+          )}
           <div className="flex items-center justify-between">
             <button
               type="submit"
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               disabled={isLoading}
             >
-              {isLoading ? 'Registering...' : 'Register'}
+              {isLoading ? "Registering..." : "Register"}
             </button>
           </div>
         </form>

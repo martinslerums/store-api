@@ -1,10 +1,45 @@
 import User from "../models/userSchema.js";
-import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
+import { generateAccessToken, generateRefreshToken } from "../utils/generateToken.js";
 
 const login = async (req, res) => {
+  const { email, password } = req.body;
 
-res.send("Hello from login route")
+  const user = await User.findOne({ email });
+
+  if (!user || !bcrypt.compareSync(password, user.password)) {
+    return res.status(401).json({ error: "Invalid credentials" });
+  }
+
+  const accessToken = generateAccessToken({ email: user.email });
+  const refreshToken = generateRefreshToken({ email: user.email });
+
+  res.cookie('accessToken', accessToken, {
+    httpOnly: true,    // Prevents JavaScript access
+    secure: true, // Set to true if using HTTPS
+    sameSite: 'Strict', // Can be 'Lax' or 'None' based on your needs
+    maxAge: 15 * 60 * 1000, // Token expiration time (15 minutes)
+  });
+
+  res.cookie('refreshToken', refreshToken, {
+    httpOnly: true,
+    secure: true, 
+    sameSite: 'Strict', 
+    maxAge: 30 * 24 * 60 * 60 * 1000, 
+  });
+
+  // res.json({ message: 'Login successful' });
+  res.json({login: true})
+};
+
+export default login;
+
+
+
+
+
+
+  // res.send("Hello from login route")
   // const { email, password } = req.body;
 
   // if (!email || !password) {
@@ -28,6 +63,3 @@ res.send("Hello from login route")
   // );
 
   // res.status(200).json({ msg: "Login successful", token });
-};
-
-export default login;

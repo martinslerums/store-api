@@ -3,6 +3,8 @@ import bcrypt from "bcryptjs";
 
 const register = async (req, res) => {
   
+  console.log("Request body:", req.body);
+
   if (req.method !== "POST") {
     return res.status(404).json({ msg: "Not Found eeerrr" });
   }
