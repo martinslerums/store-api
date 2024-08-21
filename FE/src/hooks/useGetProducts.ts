@@ -1,20 +1,27 @@
-import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
-import { GetProductsData } from "@/typings/types";
-import useQueryString from "./useQueryString";
+import { GetProductFilters, GetProductsData } from "@/typings/types";
+import { customApi } from "../api/api";
 
-const useGetProducts = () => {
-  const query = useQueryString();
+const useGetProducts = (filters?: GetProductFilters) => {
+  const query = new URLSearchParams();
+
+  if (filters) {
+    Object.keys(filters).forEach((key) => {
+      const value = filters[key as keyof GetProductFilters];
+
+      if (value !== undefined && value !== null) {
+        query.append(key, value.toString());
+      }
+    });
+  }
 
   return useQuery({
-    queryKey: ["products", query],
+    queryKey: ["products", filters],
     queryFn: async () => {
-      const apiUrl = `http://localhost:3001/api/products${query}`;
-      const { data } = await axios.get<GetProductsData>(apiUrl);
+      const { data } = await customApi.get<GetProductsData>(`/products?${query.toString()}`);
       return data;
     },
   });
 };
 
 export default useGetProducts;
-
