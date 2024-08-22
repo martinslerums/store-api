@@ -10,7 +10,8 @@ const getAllProductsStatic = async (req, res) => {
 };
 
 const getAllProducts = async (req, res) => {
-  const { featured, company, type, name, sort, fields, numericFilters } = req.query;
+  const { featured, company, type, name, sort, fields, numericFilters } =
+    req.query;
 
   const queryObject = {};
 
@@ -50,8 +51,8 @@ const getAllProducts = async (req, res) => {
     filters = filters.split(",").forEach((item) => {
       const [field, operator, value] = item.split("-");
 
-      if(options.includes(field)) {
-        queryObject[field] = {[operator]: Number(value)}
+      if (options.includes(field)) {
+        queryObject[field] = { [operator]: Number(value) };
       }
     });
   }
@@ -85,4 +86,11 @@ const getAllProducts = async (req, res) => {
   res.status(200).json({ products, nbHits: products.length });
 };
 
-export { getAllProducts, getAllProductsStatic };
+const getWishlistProducts = async (req, res) => {
+  const { productIds } = req.body;
+  const products = await Product.find({ _id: { $in: productIds } });
+
+  res.status(200).json({ products, nbHits: products.length });
+};
+
+export { getAllProducts, getAllProductsStatic, getWishlistProducts };
