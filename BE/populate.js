@@ -2,8 +2,8 @@
 
 import dotenv from "dotenv";
 import connectDB from "./services/connect.js";
-import Product from "./models/productSchema.js";
-import jsonProducts from "./products.json" assert { type: "json" };
+import sofaProducts from "./sofas.json" assert { type: "json" };
+import Sofa from "./models/sofaSchema.js"
 
 dotenv.config();
 
@@ -12,8 +12,8 @@ const start = async () => {
     await connectDB(process.env.MONGO_URI);
     console.log("Connected to DB");
 
-    await Product.deleteMany();
-    await Product.create(jsonProducts);
+    await Sofa.deleteMany();
+    await Sofa.create(sofaProducts);
 
     //This will terminate the process
     process.exit(0);

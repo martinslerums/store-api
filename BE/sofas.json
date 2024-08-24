@@ -1,0 +1,296 @@
+[
+  {
+    "name": "angersby",
+    "price": 179,
+    "description": "Divvietīgs dīvāns, gaiši pelēkā krāsā",
+    "type": "sofa",
+    "material": "polyester",
+    "dimensions": {
+      "width": 137,
+      "height": 73,
+      "depth": 84
+    },
+    "color": "gray",
+    "seat_size": 2,
+    "company": "ikea",
+    "rating": 4.2,
+    "image": "/images/sofas/ikea-angersby.jpg"
+  },
+  {
+    "name": "glostad",
+    "price": 130,
+    "description": "Divvietīgs dīvāns, klasiski zila",
+    "type": "sofa",
+    "material": "polyester",
+    "dimensions": {
+      "width": 121,
+      "height": 68,
+      "depth": 78
+    },
+    "color": "blue",
+    "seat_size": 2,
+    "company": "ikea",
+    "rating": 4,
+    "image": "/images/sofas/ikea-glostad.jpg"
+  },
+  {
+    "name": "strandmon",
+    "price": 459,
+    "description": "Trīsvietīgs dīvāns, tumši pelēkā krāsā",
+    "type": "sofa",
+    "material": "polyester",
+    "dimensions": {
+      "width": 171,
+      "height": 100,
+      "depth": 92
+    },
+    "color": "darkgray",
+    "seat_size": 3,
+    "company": "ikea",
+    "rating": 4.5,
+    "image": "/images/sofas/ikea-strandmon.jpg"
+  },
+  {
+    "name": "hyltarp",
+    "price": 539,
+    "description": "Divvietīgs dīvāns, pelēkbrūnā krāsā",
+    "type": "sofa",
+    "material": "fabric",
+    "dimensions": {
+      "width": 182,
+      "height": 82,
+      "depth": 93
+    },
+    "color": "brown",
+    "seat_size": 2,
+    "company": "ikea",
+    "rating": 4.5,
+    "image": "/images/sofas/ikea-hyltarp.jpg"
+  },
+  {
+    "name": "linanas",
+    "price": 169,
+    "description": "Divvietīgs dīvāns, tumši pelēkā krāsā",
+    "type": "sofa",
+    "material": "polyester",
+    "dimensions": {
+      "width": 137,
+      "height": 77,
+      "depth": 80
+    },
+    "color": "darkgray",
+    "seat_size": 2,
+    "company": "ikea",
+    "rating": 4.2,
+    "image": "/images/sofas/ikea-linanas.jpg"
+  },
+  {
+    "name": "rocksjon",
+    "price": 239,
+    "description": "Divvietīgs dīvāns, gaišā pelēkā",
+    "type": "sofa",
+    "material": "polyester",
+    "dimensions": {
+      "width": 142,
+      "height": 80,
+      "depth": 77
+    },
+    "color": "gray",
+    "seat_size": 2,
+    "company": "ikea",
+    "rating": 4.2,
+    "image": "/images/sofas/ikea-rocksjon.jpg"
+  },
+  {
+    "name": "soderhamn",
+    "price": 530,
+    "description": "Divvietīgs dīvāns ar zvilni, melnā krāsā",
+    "type": "sofa",
+    "material": "fabric",
+    "dimensions": {
+      "width": 186,
+      "height": 69,
+      "depth": 99
+    },
+    "color": "black",
+    "seat_size": 2,
+    "company": "ikea",
+    "rating": 4.8,
+    "image": "/images/sofas/ikea-soderhamn.jpg"
+  },
+  {
+    "name": "vimle",
+    "price": 1539,
+    "featured": true,
+    "description": "Četrvietīgs dīvāns, ar zvilni melnā krāsā",
+    "type": "corner-sofa",
+    "material": "leather",
+    "dimensions": {
+      "width": 322,
+      "height": 65,
+      "depth": 98
+    },
+    "color": "black",
+    "seat_size": 4,
+    "company": "ikea",
+    "rating": 5,
+    "image": "/images/sofas/ikea-vimle.jpg"
+  },
+  {
+    "name": "landskrona",
+    "price": 999,
+    "featured": true,
+    "description": "Četrvietīgs dīvāns ar zviļņiem, tumši pelēka krāsā",
+    "type": "corner-sofa",
+    "material": "fabric",
+    "dimensions": {
+      "width": 320,
+      "height": 78,
+      "depth": 89
+    },
+    "color": "darkgray",
+    "seat_size": 4,
+    "company": "ikea",
+    "rating": 4.8,
+    "image": "/images/sofas/ikea-landskrona.jpg"
+  },
+  {
+    "name": "sv2128",
+    "price": 441,
+    "description": "Divvietīgs dīvāns, tumši pelēka krāsā",
+    "type": "sofa",
+    "material": "fabric",
+    "dimensions": {
+      "width": 164,
+      "height": 83,
+      "depth": 97
+    },
+    "color": "darkgray",
+    "seat_size": 2,
+    "company": "mebeles1",
+    "rating": 4.8,
+    "image": "/images/sofas/mebeles1-sv2128.jpg"
+  },
+  {
+    "name": "oakland",
+    "price": 489,
+    "description": "Divvietīgs dīvāns, tumši pelēka krāsā",
+    "type": "sofa",
+    "material": "fabric",
+    "dimensions": {
+      "width": 196,
+      "height": 91,
+      "depth": 96
+    },
+    "color": "darkgray",
+    "seat_size": 2,
+    "company": "mebeles1",
+    "rating": 4.8,
+    "image": "/images/sofas/mebeles1-oakland.jpg"
+  },
+  {
+    "name": "providence",
+    "price": 689,
+    "description": "Divvietīgs dīvāns, gaiši pelēkā/baltā krāsā",
+    "type": "sofa",
+    "material": "fabric",
+    "dimensions": {
+      "width": 200,
+      "height": 85,
+      "depth": 100
+    },
+    "color": "white",
+    "seat_size": 2,
+    "company": "mebeles1",
+    "rating": 4.7,
+    "image": "/images/sofas/mebeles1-providence.jpg"
+  },
+  {
+    "name": "riverton",
+    "price": 913,
+    "featured": true,
+    "description": "Divvietīgs dīvāns, baltā krāsā",
+    "type": "sofa",
+    "material": "fabric",
+    "dimensions": {
+      "width": 224,
+      "height": 96,
+      "depth": 79
+    },
+    "color": "white",
+    "seat_size": 2,
+    "company": "mebeles1",
+    "rating": 4.9,
+    "image": "/images/sofas/mebeles1-riverton.jpg"
+  },
+  {
+    "name": "dallas",
+    "price": 1399,
+    "featured": true,
+    "description": "Divvietīgs dīvāns, brūnā krāsā",
+    "type": "sofa",
+    "material": "fabric",
+    "dimensions": {
+      "width": 232,
+      "height": 80,
+      "depth": 116
+    },
+    "color": "brown",
+    "seat_size": 2,
+    "company": "mebeles1",
+    "rating": 4.9,
+    "image": "/images/sofas/mebeles1-dallas.jpg"
+  },
+  {
+    "name": "providence d127",
+    "price": 782,
+    "description": "Trīsvietīgs dīvāns ar veļas kasti, gaiši pelēkā krāsā",
+    "type": "sofa",
+    "material": "fabric",
+    "dimensions": {
+      "width": 225,
+      "height": 74,
+      "depth": 140
+    },
+    "color": "gray",
+    "seat_size": 3,
+    "company": "mebeles1",
+    "rating": 4.6,
+    "image": "/images/sofas/mebeles1-providence-d127.jpg"
+  },
+  {
+    "name": "kingsport",
+    "price": 1599,
+    "featured": true,
+    "description": "Četrvietīgs dīvāns, brūnā krāsā",
+    "type": "sofa",
+    "material": "fabric",
+    "dimensions": {
+      "width": 314,
+      "height": 90,
+      "depth": 224
+    },
+    "color": "brown",
+    "seat_size": 4,
+    "company": "mebeles1",
+    "rating": 4.9,
+    "image": "/images/sofas/mebeles1-kingsport.jpg"
+  },
+  {
+    "name": "edinburg",
+    "price": 775,
+    "description": "Izvelkams trīsvietīgs dīvāns ar veļās kasti, pelēkā krāsā",
+    "type": "sofa",
+    "material": "fabric",
+    "dimensions": {
+      "width": 235,
+      "height": 82,
+      "depth": 155
+    },
+    "color": "gray",
+    "seat_size": 3,
+    "company": "mebeles1",
+    "rating": 4.4,
+    "image": "/images/sofas/mebeles1-edinburg.jpg"
+  }
+]
