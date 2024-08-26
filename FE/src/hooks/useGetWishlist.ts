@@ -5,6 +5,8 @@ import { useQuery } from "@tanstack/react-query";
 const useGetWishList = () => {
   const productIds = JSON.parse(localStorage.getItem("likedItems") || "[]");
 
+  console.log(productIds)
+
   return useQuery({
     queryKey: ["wishlist", productIds],
     queryFn: async () => {
@@ -13,7 +15,7 @@ const useGetWishList = () => {
         return;
       }
 
-      const { data } = await customApi.post<GetProductsData>(`/wishlist`, {
+      const { data } = await customApi.post<GetProductsData>(`/products/wishlist`, {
         productIds,
       });
 
