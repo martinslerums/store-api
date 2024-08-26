@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import { Product } from "@/typings/types";
+import { Sofa } from "@/typings/types";
 import {
   Card,
   CardContent,
@@ -8,54 +7,19 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { FaRegHeart, FaHeart } from "react-icons/fa";
+import WishlistHart from "./WishlistHart";
 
 type ProductCardProps = {
-  product: Product;
+  product: Sofa;
 };
 
 const ProductCard = ({ product }: ProductCardProps) => {
-  const [liked, setLiked] = useState<boolean>(false);
-
-  useEffect(() => {
-    const likedItems = JSON.parse(localStorage.getItem("likedItems") || "[]");
-    if (likedItems.includes(product._id)) {
-      setLiked(true);
-    }
-  }, [product._id]);
-
-  const handleLiked = (id: string) => {
-    let likedItems = JSON.parse(localStorage.getItem("likedItems") || "[]");
-
-    console.log("LikedItems from handleLiked: ", likedItems)
-
-    if (likedItems.includes(id)) {
-      likedItems = likedItems.filter((itemId: string) => itemId !== id);
-      setLiked(false);
-    } else {
-      likedItems.push(id);
-      setLiked(true);
-    }
-
-    localStorage.setItem("likedItems", JSON.stringify(likedItems));
-  };
-
   return (
     <Card className="border-none flex flex-col justify-between">
       <CardHeader>
         <CardTitle className="flex justify-between">
           {product.name.toUpperCase()}
-          {liked ? (
-            <FaHeart
-              className="cursor-pointer text-red-500"
-              onClick={() => handleLiked(product._id)}
-            />
-          ) : (
-            <FaRegHeart
-              className="cursor-pointer"
-              onClick={() => handleLiked(product._id)}
-            />
-          )}
+          <WishlistHart id={product._id} />
         </CardTitle>
         <CardDescription>{product.description}</CardDescription>
       </CardHeader>
