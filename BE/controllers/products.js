@@ -1,6 +1,5 @@
-import Product from "../models/productSchema.js";
-import Sofa from "../models/sofaSchema.js"
-
+import Sofa from "../models/sofaSchema.js";
+import mongoose from "mongoose";
 
 //For testing purposes with Static data ( hard-coded )
 const getAllProductsStatic = async (req, res) => {
@@ -90,9 +89,30 @@ const getAllProducts = async (req, res) => {
 
 const getWishlistProducts = async (req, res) => {
   const { productIds } = req.body;
-  const products = await Product.find({ _id: { $in: productIds } });
 
-  res.status(200).json({ products, nbHits: products.length });
+  if (
+    !Array.isArray(productIds) ||
+    productIds.some((id) => !mongoose.Types.ObjectId.isValid(id))
+  ) {
+    return res
+      .status(400)
+      .json({ success: false, error: "Invalid productIds" });
+  }
+
+  if (productIds.length > 100) {
+    return res
+      .status(400)
+      .json({ success: false, error: "Too many productIds" });
+  }
+
+  const products = await Sofa.find({ _id: { $in: productIds } }).lean();
+
+  console.log(`Product IDs requested: ${productIds.join(", ")}`);
+
+  res.status(200).json({
+    success: true,
+    data: { products, nbHits: products.length },
+  });
 };
 
 const getAllSofas = async (req, res) => {
