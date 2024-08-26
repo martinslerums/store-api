@@ -3,9 +3,13 @@ import { getAllProducts, getAllProductsStatic, getWishlistProducts, getAllSofas 
 
 const productRouter = express.Router();
 
-productRouter.route("/products").get(getAllProducts);
-productRouter.route("/products/sofas").get(getAllSofas);
+productRouter.route("/").get(getAllProducts);
+
+productRouter.route("/sofas").get(getAllSofas);
+
 productRouter.route("/wishlist").post(getWishlistProducts);
+
+
 
 //Testing Purposes
 productRouter.route("/static").get(getAllProductsStatic);
