@@ -1,0 +1,380 @@
+[
+  {
+    "name": "vimle",
+    "price": 589,
+    "featured": true,
+    "description": "Mīksts atpūtas krēsls ar roku balstiem un spilvenu, melnā krāsā",
+    "company": "ikea",
+    "type": "lounge-chair",
+    "material": "leather",
+    "dimensions": {
+      "width": 101,
+      "height": 83,
+      "depth": 98,
+      "seat_height": 48
+    },
+    "rating": 4.9,
+    "image": "images/chairs/ikea-vimle.jpg",
+    "color": "black"
+  },
+  {
+    "name": "rocksjon",
+    "price": 149,
+    "featured": false,
+    "description": "Atpūtas krēsls ar roku balstiem, baltā krāsā",
+    "company": "ikea",
+    "type": "lounge-chair",
+    "material": "fabric",
+    "dimensions": {
+      "width": 76,
+      "height": 80,
+      "depth": 78,
+      "seat_height": 47
+    },
+    "rating": 4.2,
+    "image": "images/chairs/ikea-rocksjon.jpg",
+    "color": "white"
+  },
+  {
+    "name": "remsta",
+    "price": 189,
+    "featured": false,
+    "description": "Atpūtas krēsls, tumši zilā krāsā",
+    "company": "ikea",
+    "type": "lounge-chair",
+    "material": "fabric",
+    "dimensions": {
+      "width": 60,
+      "height": 88,
+      "depth": 72,
+      "seat_height": 45
+    },
+    "rating": 4.8,
+    "image": "images/chairs/ikea-remsta.jpg",
+    "color": "dark blue"
+  },
+  {
+    "name": "poang",
+    "price": 79,
+    "featured": false,
+    "description": "Atpūtas krēsls ar koka rāmi un zemu atzveltni, melnā krāsā krāsā",
+    "company": "ikea",
+    "type": "lounge-chair",
+    "material": "fabric",
+    "dimensions": {
+      "width": 68,
+      "height": 70,
+      "depth": 75,
+      "seat_height": 39
+    },
+    "rating": 4.5,
+    "image": "images/chairs/ikea-poang.jpg",
+    "color": "black"
+  },
+  {
+    "name": "onnestad",
+    "price": 89,
+    "featured": false,
+    "description": "Atpūtas krēsls ar metāla rāmi, smilškrāsā",
+    "company": "ikea",
+    "type": "lounge-chair",
+    "material": "fabric",
+    "dimensions": {
+      "width": 66,
+      "height": 63,
+      "depth": 76,
+      "seat_height": 28
+    },
+    "rating": 4.0,
+    "image": "images/chairs/ikea-onnestad.jpg",
+    "color": "sand"
+  },
+  {
+    "name": "muren",
+    "price": 269,
+    "featured": true,
+    "description": "Krēsls ar regulējamu atzveltni, gaiši pelēkā krāsā",
+    "company": "ikea",
+    "type": "lounge-chair",
+    "material": "fabric",
+    "dimensions": {
+      "width": 85,
+      "height": 97,
+      "depth": 94,
+      "seat_height": 45
+    },
+    "rating": 4.9,
+    "image": "images/chairs/ikea-muren.jpg",
+    "color": "light gray"
+  },
+  {
+    "name": "ekero",
+    "price": 139,
+    "featured": false,
+    "description": "Atpūtas krēsls, dzeltenā krāsā",
+    "company": "ikea",
+    "type": "lounge-chair",
+    "material": "fabric",
+    "dimensions": {
+      "width": 70,
+      "height": 75,
+      "depth": 73,
+      "seat_height": 43
+    },
+    "rating": 4.2,
+    "image": "images/chairs/ikea-ekero.jpg",
+    "color": "yellow"
+  },
+  {
+    "name": "dyvlinge",
+    "price": 169,
+    "featured": true,
+    "description": "Grozāmais atpūtas krēsls ar metāla kāju, melnā krāsā",
+    "company": "ikea",
+    "type": "lounge-chair",
+    "material": "fabric",
+    "dimensions": {
+      "width": 63,
+      "height": 68,
+      "depth": 75,
+      "seat_height": 43
+    },
+    "rating": 4.8,
+    "image": "images/chairs/ikea-dyvlinge.jpg",
+    "color": "black"
+  },
+  {
+    "name": "arsunda",
+    "price": 55,
+    "featured": false,
+    "description": "Atpūtas krēsls, gaiši pelēkā krāsā",
+    "company": "ikea",
+    "type": "lounge-chair",
+    "material": "fabric",
+    "dimensions": {
+      "width": 66,
+      "height": 100,
+      "depth": 73,
+      "seat_height": 42
+    },
+    "rating": 4.8,
+    "image": "images/chairs/ikea-arsunda.jpg",
+    "color": "light gray"
+  },
+  {
+    "name": "springfield ",
+    "price": 55,
+    "featured": false,
+    "description": "Bāra krēsls, baltā krāsā",
+    "company": "mebeles1",
+    "type": "bar-chair",
+    "material": "metal",
+    "dimensions": {
+      "width": 49,
+      "height": 108,
+      "depth": 52,
+      "seat_height": 78
+    },
+    "rating": 4.6,
+    "image": "images/chairs/mebeles1-springfield.jpg",
+    "color": "white"
+  },
+  {
+    "name": "oakland ",
+    "price": 110,
+    "featured": false,
+    "description": "Zemais bāra krēsls, melnā krāsā",
+    "company": "mebeles1",
+    "type": "bar-chair",
+    "material": "metal",
+    "dimensions": {
+      "width": 47,
+      "height": 113,
+      "depth": 51,
+      "seat_height": 62
+    },
+    "rating": 4.6,
+    "image": "images/chairs/mebeles1-oakland.jpg",
+    "color": "black"
+  },
+  {
+    "name": "dallas 4203",
+    "price": 154,
+    "featured": false,
+    "description": "Bāra krēsls bez atzveltnes, brūnā krāsā",
+    "company": "mebeles1",
+    "type": "bar-chair",
+    "material": "wood",
+    "dimensions": {
+      "width": 36,
+      "height": 75,
+      "depth": 36,
+      "seat_height": 75
+    },
+    "rating": 4.6,
+    "image": "images/chairs/mebeles1-dallas-4203.jpg",
+    "color": "brown"
+  },
+  {
+    "name": "dallas 3283",
+    "price": 189,
+    "featured": false,
+    "description": "Bāra krēsls bez atzveltnes, brūnā krāsā",
+    "company": "mebeles1",
+    "type": "bar-chair",
+    "material": "wood",
+    "dimensions": {
+      "width": 44,
+      "height": 76,
+      "depth": 44,
+      "seat_height": 76
+    },
+    "rating": 4.6,
+    "image": "images/chairs/mebeles1-dallas-3283.jpg",
+    "color": "brown"
+  },
+  {
+    "name": "boston 328",
+    "price": 149,
+    "featured": false,
+    "description": "Bāra krēsls, melnā krāsā",
+    "company": "mebeles1",
+    "type": "bar-chair",
+    "material": "wood",
+    "dimensions": {
+      "width": 48,
+      "height": 101,
+      "depth": 51,
+      "seat_height": 79
+    },
+    "rating": 4.6,
+    "image": "images/chairs/mebeles1-boston-328.jpg",
+    "color": "black"
+  },
+  {
+    "name": "houston 964",
+    "price": 70,
+    "featured": true,
+    "description": "Regulējuma augstuma bārā krēsls ar metāla kāju, pelēkā krāsā",
+    "company": "mebeles1",
+    "type": "bar-chair",
+    "material": "fabric",
+    "dimensions": {
+      "width": 43,
+      "height": 106,
+      "depth": 44,
+      "seat_height": 62
+    },
+    "rating": 4.9,
+    "image": "images/chairs/mebeles1-dallas-4203.jpg",
+    "color": "gray"
+  },
+  {
+    "name": "377706",
+    "price": 115,
+    "featured": false,
+    "description": "Regulējams offisa krēsls ar roku balstiem, baltā krāsā",
+    "company": "berry",
+    "type": "office-chair",
+    "material": "leather",
+    "dimensions": {
+      "width": 52,
+      "height": 82,
+      "depth": 58,
+      "seat_height": 44
+    },
+    "rating": 4.6,
+    "image": "images/chairs/berry-377706.jpg",
+    "color": "white"
+  },
+  {
+    "name": "111731",
+    "price": 142,
+    "featured": false,
+    "description": "Regulējams offisa krēsls ar roku balstiem, melnā krāsā",
+    "company": "berry",
+    "type": "office-chair",
+    "material": "leather",
+    "dimensions": {
+      "width": 61,
+      "height": 119,
+      "depth": 69,
+      "seat_height": 43
+    },
+    "rating": 4.6,
+    "image": "images/chairs/berry-111731.jpg",
+    "color": "black"
+  },
+  {
+    "name": "496579",
+    "price": 199,
+    "featured": true,
+    "description": "Ergonomisks spēļu krēsls ar roku balstiem, melnā krāsā",
+    "company": "berry",
+    "type": "office-chair",
+    "material": "leather",
+    "dimensions": {
+      "width": 69,
+      "height": 134,
+      "depth": 62,
+      "seat_height": 49
+    },
+    "rating": 4.6,
+    "image": "images/chairs/berry-496579.jpg",
+    "color": "black"
+  },
+  {
+    "name": "151911",
+    "price": 109,
+    "featured": false,
+    "description": "Biroja krēsls ar roku un galvas balstu, pelekā krāsā",
+    "company": "berry",
+    "type": "office-chair",
+    "material": "fabric",
+    "dimensions": {
+      "width": 62,
+      "height": 124,
+      "depth": 65,
+      "seat_height": 44
+    },
+    "rating": 4.6,
+    "image": "images/chairs/berry-151911.jpg",
+    "color": "gray"
+  },
+  {
+    "name": "35627",
+    "price": 119,
+    "featured": false,
+    "description": "Biroja krēsls ar roku un galvas balstu, melnā krāsā",
+    "company": "berry",
+    "type": "office-chair",
+    "material": "fabric",
+    "dimensions": {
+      "width": 64,
+      "height": 134,
+      "depth": 63,
+      "seat_height": 46
+    },
+    "rating": 4.6,
+    "image": "images/chairs/berry-35627.jpg",
+    "color": "black"
+  },
+  {
+    "name": "110935",
+    "price": 179,
+    "featured": true,
+    "description": "Biroja krēsls ar roku un kāju balstu, melnā krāsā",
+    "company": "berry",
+    "type": "office-chair",
+    "material": "leather",
+    "dimensions": {
+      "width": 66,
+      "height": 128,
+      "depth": 70,
+      "seat_height": 55
+    },
+    "rating": 4.9,
+    "image": "images/chairs/berry-110935.jpg",
+    "color": "black"
+  }
+]
