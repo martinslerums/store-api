@@ -1,43 +1,92 @@
-// import useGetProducts from "@/hooks/useGetProducts";
-import ProductCard from "@/components/ProductCard";
-import Filter from "@/components/Filter";
-
-import { useProductStore } from "@/stores/productStore";
+import useGetProducts from "@/hooks/useGetProducts";
 import { useEffect } from "react";
-import useGetSofas from "@/hooks/useGetSofas";
-import { Sofa } from "@/typings/types";
+import { AllProductsData, Chair, Sofa } from "@/typings/types";
+import ProductCard from "@/components/ProductCard";
+import { useProductStore } from "@/stores/productStore";
+import FeaturedCarousel from "@/components/FeaturedCarousel";
+import { Link } from "react-router-dom";
 
 const ProductsPage = () => {
-  const { type, name } = useProductStore();
+  const { name } = useProductStore();
+  const { data, isLoading, isError } = useGetProducts<AllProductsData>(
+    undefined,
+    { name }
+  );
 
-  const filters = { type, name };
-  const { data, isLoading, isError } = useGetSofas(filters);
+  const sofas = data?.products.sofas || [];
+  const chairs = data?.products.chairs || [];
 
-  const { products } = data || {};
+  const searchedProducts = name ? [...sofas, ...chairs] : [];
 
   useEffect(() => {
-    console.log("Component Mounted");
+    console.log("Component Mounted Product Page");
   }, []);
 
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Error loading products</div>;
-
   return (
-    <div className="flex justify-center">
-      <div className="max-w-[300px] w-full border border-black">
-        <Filter />
-      </div>
-      <div>
-        {!products ? (
-          <div>No products available.</div>
-        ) : (
-          <div>
-            <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
-              {products.map((product: Sofa) => (
-                <ProductCard key={product._id} product={product} />
-              ))}
-            </div>
+    <div className="container flex justify-center">
+      <div className="flex-1 p-4">
+        {isLoading && (
+          <div className="text-lg text-gray-500 flex justify-center items-center h-screen">
+            Loading...
           </div>
+        )}
+
+        {isError && (
+          <div className="text-lg text-red-500 flex justify-center items-center h-screen">
+            Error loading products
+          </div>
+        )}
+
+        {!isLoading && !isError && (
+          <>
+            {name ? (
+              searchedProducts && searchedProducts.length > 0 ? (
+                <div>
+                  <p>Your search results:</p>
+                  <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
+                    {searchedProducts.map((product: Sofa | Chair) => (
+                      <ProductCard key={product._id} product={product} />
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <p>No matching results found for: {name}</p>
+              )
+            ) : (
+              <div className="w-full space-y-4">
+                <div className="mx-auto">
+                  <h1 className="font-semibold text-lg">Best of sofas: </h1>
+                  {sofas.length > 0 ? (
+                    <>
+                      <FeaturedCarousel products={sofas} />
+                      <div className="text-right">
+                        <Link to="/products/sofas">View all</Link>
+                      </div>
+                    </>
+                  ) : (
+                    <div className="text-sm text-gray-500">
+                      No sofas available.
+                    </div>
+                  )}
+                </div>
+                <div>
+                  <h1 className="font-semibold text-lg">Best of chairs: </h1>
+                  {chairs.length > 0 ? (
+                    <>
+                      <FeaturedCarousel products={chairs} />
+                      <div className="text-right">
+                        <Link to="/products/chairs">View all</Link>
+                      </div>
+                    </>
+                  ) : (
+                    <div className="text-sm text-gray-500">
+                      No chairs available.
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>
@@ -45,54 +94,6 @@ const ProductsPage = () => {
 };
 
 export default ProductsPage;
-
-// const [page, setPage] = useState(1);
-// const [limit] = useState(10);
-
-// const productsLength = products.length;
-
-// const currentUrl = new URL(window.location.href);
-
-// const isLastPage = products.length < limit;
-// const isFirstPage = page <= 1;
-
-// console.log("productsLength: ", productsLength);
-
-// useEffect(() => {
-//   const currentUrl = new URL(window.location.href);
-//   const pageParam = currentUrl.searchParams.get("page");
-
-//   if (!pageParam || isNaN(Number(pageParam)) || Number(pageParam) < 1) {
-//     currentUrl.searchParams.set("page", "1");
-//     window.history.replaceState({}, "", currentUrl);
-//   }
-
-//   setPage(Number(pageParam) || 1);
-//   console.log("Products Component Mounted");
-// }, []);
-
-// const handleNextPage = () => {
-//   const nextPage = page + 1;
-//   setPage(nextPage);
-
-//   currentUrl.searchParams.set("page", nextPage.toString());
-//   window.history.pushState({}, "", currentUrl);
-//   window.dispatchEvent(new PopStateEvent("popstate"));
-// };
-
-// const handlePreviousPage = () => {
-//   if (page > 1) {
-//     const previousPage = page - 1;
-//     setPage(previousPage);
-
-//     const currentUrl = new URL(window.location.href);
-//     currentUrl.searchParams.set("page", previousPage.toString());
-//     window.history.pushState({}, "", currentUrl);
-//     window.dispatchEvent(new PopStateEvent("popstate"));
-//   }
-// };
-
-// import { useEffect, useState } from "react";
 
 // import {
 //   Pagination,
