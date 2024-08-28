@@ -14,7 +14,7 @@
       "seat_height": 48
     },
     "rating": 4.9,
-    "image": "images/chairs/ikea-vimle.jpg",
+    "image": "/images/chairs/ikea-vimle.jpg",
     "color": "black"
   },
   {
@@ -32,7 +32,7 @@
       "seat_height": 47
     },
     "rating": 4.2,
-    "image": "images/chairs/ikea-rocksjon.jpg",
+    "image": "/images/chairs/ikea-rocksjon.jpg",
     "color": "white"
   },
   {
@@ -50,7 +50,7 @@
       "seat_height": 45
     },
     "rating": 4.8,
-    "image": "images/chairs/ikea-remsta.jpg",
+    "image": "/images/chairs/ikea-remsta.jpg",
     "color": "dark blue"
   },
   {
@@ -68,7 +68,7 @@
       "seat_height": 39
     },
     "rating": 4.5,
-    "image": "images/chairs/ikea-poang.jpg",
+    "image": "/images/chairs/ikea-poang.jpg",
     "color": "black"
   },
   {
@@ -86,7 +86,7 @@
       "seat_height": 28
     },
     "rating": 4.0,
-    "image": "images/chairs/ikea-onnestad.jpg",
+    "image": "/images/chairs/ikea-onnestad.jpg",
     "color": "sand"
   },
   {
@@ -104,7 +104,7 @@
       "seat_height": 45
     },
     "rating": 4.9,
-    "image": "images/chairs/ikea-muren.jpg",
+    "image": "/images/chairs/ikea-muren.jpg",
     "color": "light gray"
   },
   {
@@ -122,7 +122,7 @@
       "seat_height": 43
     },
     "rating": 4.2,
-    "image": "images/chairs/ikea-ekero.jpg",
+    "image": "/images/chairs/ikea-ekero.jpg",
     "color": "yellow"
   },
   {
@@ -140,7 +140,7 @@
       "seat_height": 43
     },
     "rating": 4.8,
-    "image": "images/chairs/ikea-dyvlinge.jpg",
+    "image": "/images/chairs/ikea-dyvlinge.jpg",
     "color": "black"
   },
   {
@@ -158,7 +158,7 @@
       "seat_height": 42
     },
     "rating": 4.8,
-    "image": "images/chairs/ikea-arsunda.jpg",
+    "image": "/images/chairs/ikea-arsunda.jpg",
     "color": "light gray"
   },
   {
@@ -176,7 +176,7 @@
       "seat_height": 78
     },
     "rating": 4.6,
-    "image": "images/chairs/mebeles1-springfield.jpg",
+    "image": "/images/chairs/mebeles1-springfield.jpg",
     "color": "white"
   },
   {
@@ -194,7 +194,7 @@
       "seat_height": 62
     },
     "rating": 4.6,
-    "image": "images/chairs/mebeles1-oakland.jpg",
+    "image": "/images/chairs/mebeles1-oakland.jpg",
     "color": "black"
   },
   {
@@ -212,7 +212,7 @@
       "seat_height": 75
     },
     "rating": 4.6,
-    "image": "images/chairs/mebeles1-dallas-4203.jpg",
+    "image": "/images/chairs/mebeles1-dallas-4203.jpg",
     "color": "brown"
   },
   {
@@ -230,7 +230,7 @@
       "seat_height": 76
     },
     "rating": 4.6,
-    "image": "images/chairs/mebeles1-dallas-3283.jpg",
+    "image": "/images/chairs/mebeles1-dallas-3283.jpg",
     "color": "brown"
   },
   {
@@ -248,7 +248,7 @@
       "seat_height": 79
     },
     "rating": 4.6,
-    "image": "images/chairs/mebeles1-boston-328.jpg",
+    "image": "/images/chairs/mebeles1-boston-328.jpg",
     "color": "black"
   },
   {
@@ -266,7 +266,7 @@
       "seat_height": 62
     },
     "rating": 4.9,
-    "image": "images/chairs/mebeles1-dallas-4203.jpg",
+    "image": "/images/chairs/mebeles1-houston-964.jpg",
     "color": "gray"
   },
   {
@@ -284,7 +284,7 @@
       "seat_height": 44
     },
     "rating": 4.6,
-    "image": "images/chairs/berry-377706.jpg",
+    "image": "/images/chairs/berry-377706.jpg",
     "color": "white"
   },
   {
@@ -302,7 +302,7 @@
       "seat_height": 43
     },
     "rating": 4.6,
-    "image": "images/chairs/berry-111731.jpg",
+    "image": "/images/chairs/berry-111731.jpg",
     "color": "black"
   },
   {
@@ -320,7 +320,7 @@
       "seat_height": 49
     },
     "rating": 4.6,
-    "image": "images/chairs/berry-496579.jpg",
+    "image": "/images/chairs/berry-496579.jpg",
     "color": "black"
   },
   {
@@ -338,7 +338,7 @@
       "seat_height": 44
     },
     "rating": 4.6,
-    "image": "images/chairs/berry-151911.jpg",
+    "image": "/images/chairs/berry-151911.jpg",
     "color": "gray"
   },
   {
@@ -356,7 +356,7 @@
       "seat_height": 46
     },
     "rating": 4.6,
-    "image": "images/chairs/berry-35627.jpg",
+    "image": "/images/chairs/berry-35627.jpg",
     "color": "black"
   },
   {
@@ -374,7 +374,7 @@
       "seat_height": 55
     },
     "rating": 4.9,
-    "image": "images/chairs/berry-110935.jpg",
+    "image": "/images/chairs/berry-110935.jpg",
     "color": "black"
   }
 ]
