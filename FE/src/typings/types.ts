@@ -57,6 +57,7 @@ export type Sofa = {
 };
 
 export type Chair = {
+  _id: string;
   name: string;
   price: number;
   featured?: boolean;
