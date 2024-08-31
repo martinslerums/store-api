@@ -1,8 +1,13 @@
-const errorHandlerMiddleware = async (err, req, res, next) => {
-  console.log(err);
+import CustomAPIError from "../errors/index.js"
+import { StatusCodes } from "http-status-codes";
+
+const errorHandlerMiddleware = (err, req, res, next) => {
+  if (err instanceof CustomAPIError) {
+    return res.status(err.statusCode).json({ msg: err.message });
+  }
   return res
-    .status(500)
-    .json({ msg: "Something went wrong, please try again" });
+    .status(StatusCodes.INTERNAL_SERVER_ERROR)
+    .send("Something went wrong try again later");
 };
 
 export default errorHandlerMiddleware;
