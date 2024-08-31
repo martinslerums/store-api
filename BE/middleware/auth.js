@@ -1,19 +1,24 @@
 import jwt from "jsonwebtoken";
+import UnauthenticatedError from "../errors/index.js"
 
 const authenticateToken = (req, res, next) => {
-  const token = req.cookies.accessToken;
+  const authHeader = req.headers.authorization;
 
-  if (!token) {
-    return res.sendStatus(401); 
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    throw new UnauthenticatedError("No token provided");
   }
 
-  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET || 'secret_key', (err, user) => {
-    if (err) {
-      return res.sendStatus(403); 
-    }
-    req.user = user;
-    next(); 
-  });
+  const token = authHeader.split(" ")[1];
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const { id, username } = decoded;
+    req.user = { id, username };
+
+    next();
+  } catch (error) {
+    throw new UnauthenticatedError("Not authorized to access this route");
+  }
 };
 
 export default authenticateToken;
