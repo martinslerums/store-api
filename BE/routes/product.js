@@ -1,11 +1,13 @@
 import express from "express";
-import { getAllProducts, getAllProductsStatic, getWishlistProducts, getAllSofas, getAllChairs } from "../controllers/products.js";
+import { getAllProducts, getAllProductsStatic, getWishlistProducts, getAllSofas, getAllChairs, getFilters } from "../controllers/products.js";
 
 const productRouter = express.Router();
 
 productRouter.route("/").get(getAllProducts);
 
 productRouter.route("/sofas").get(getAllSofas);
+productRouter.route("/sofas/filters").get(getFilters);
+
 productRouter.route("/chairs").get(getAllChairs);
 
 productRouter.route("/wishlist").post(getWishlistProducts);

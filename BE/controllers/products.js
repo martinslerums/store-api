@@ -4,11 +4,15 @@ import mongoose from "mongoose";
 
 //For testing purposes with Static data ( hard-coded )
 const getAllProductsStatic = async (req, res) => {
-  const products = await Product.find({ price: { $gt: 30 } })
-    .sort("price")
-    .select("name price");
+  const uniqueCompanies = await Sofa.distinct("company");
+  const uniqueColors = await Sofa.distinct("color");
 
-  res.status(200).json({ products, nbHits: products.length });
+  const filterValues = {
+    uniqueCompanies,
+    uniqueColors
+  }
+
+  res.status(200).json(filterValues);
 };
 
 const getAllProducts = async (req, res) => {
@@ -72,14 +76,10 @@ const getWishlistProducts = async (req, res) => {
 };
 
 const getAllSofas = async (req, res) => {
-  const { featured, company, type, sort, fields, numericFilters } =
+  const {company, type, material, color, sort, fields, numericFilters } =
     req.query;
 
   const queryObject = {};
-
-  if (featured) {
-    queryObject.featured = featured === "true" ? true : false;
-  }
 
   if (company) {
     queryObject.company = company;
@@ -89,7 +89,14 @@ const getAllSofas = async (req, res) => {
     queryObject.type = type;
   }
 
+  if (material) {
+    queryObject.material = material;
+  }
 
+  if (color) {
+    queryObject.color = color;
+  }
+  
   if (numericFilters) {
     const operatorMap = {
       "<=": "$lte",
@@ -227,10 +234,28 @@ const getAllChairs = async (req, res) => {
   });
 };
 
+const getFilters = async (req, res) => {
+  const uniqueCompanies = await Sofa.distinct("company");
+  const uniqueColors = await Sofa.distinct("color");
+  const uniqueMaterials = await Sofa.distinct("material")
+  const uniqueTypes = await Sofa.distinct("type")
+  
+
+  const filterValues = {
+    uniqueCompanies,
+    uniqueColors,
+    uniqueMaterials,
+    uniqueTypes
+  }
+
+  res.status(200).json(filterValues);
+}
+
 export {
   getAllProductsStatic,
   getAllProducts,
   getWishlistProducts,
   getAllSofas,
   getAllChairs,
+  getFilters
 };
