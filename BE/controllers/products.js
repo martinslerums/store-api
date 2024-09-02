@@ -9,22 +9,21 @@ const getAllProductsStatic = async (req, res) => {
 
   const filterValues = {
     uniqueCompanies,
-    uniqueColors
-  }
+    uniqueColors,
+  };
 
   res.status(200).json(filterValues);
 };
 
 const getAllProducts = async (req, res) => {
-
   const { name } = req.query;
 
   const queryObject = {};
 
   if (name) {
-    queryObject.name = { $regex: name, $options: "i" }; 
+    queryObject.name = { $regex: name, $options: "i" };
   } else {
-    queryObject.featured = true; 
+    queryObject.featured = true;
   }
 
   const [sofas, chairs] = await Promise.all([
@@ -75,8 +74,21 @@ const getWishlistProducts = async (req, res) => {
   });
 };
 
-const getAllSofas = async (req, res) => {
-  const {company, type, material, color, sort, fields, numericFilters } =
+const getFilteredProducts = async (req, res) => {
+  const isSofaRoute = req.path.includes("sofas");
+  const isChairRoute = req.path.includes("chairs");
+
+  let collection;
+
+  if (isSofaRoute) {
+    collection = Sofa;
+  } else if (isChairRoute) {
+    collection = Chair;
+  } else {
+    return res.status(400).json({ message: "Invalid route" });
+  }
+
+  const { company, type, material, color, sort, fields, numericFilters } =
     req.query;
 
   const queryObject = {};
@@ -96,7 +108,7 @@ const getAllSofas = async (req, res) => {
   if (color) {
     queryObject.color = color;
   }
-  
+
   if (numericFilters) {
     const operatorMap = {
       "<=": "$lte",
@@ -123,87 +135,9 @@ const getAllSofas = async (req, res) => {
     });
   }
 
-  console.log("queryObject in Sofas Controller: ", queryObject);
+  console.log("queryObject in FilteredProducts Controller: ", queryObject);
 
-  let result = Sofa.find(queryObject);
-  /* SORTING */
-  if (sort) {
-    const sortList = sort.split(",").join(" ");
-    result = result.sort(sortList);
-  } else {
-    result = result.sort("createdAt");
-  }
-
-  /* FIELDS ( SELECT ) */
-  if (fields) {
-    const fieldsList = fields.split(",").join(" ");
-    result = result.select(fieldsList);
-  }
-
-  /* LIMIT (products returns) SKIP (skips products for pagination) */
-  const page = Number(req.query.page) || 1;
-  const limit = Number(req.query.limit) || 100;
-  const skip = (page - 1) * limit;
-
-  result = result.skip(skip).limit(limit);
-
-  const products = await result;
-
-  res.status(200).json({
-    success: true,
-    products: products,
-    nbHits: products.length,
-  });
-};
-
-const getAllChairs = async (req, res) => {
-  const { featured, company, type, sort, fields, numericFilters } =
-    req.query;
-
-  const queryObject = {};
-
-  if (featured) {
-    queryObject.featured = featured === "true" ? true : false;
-  }
-
-  if (company) {
-    queryObject.company = company;
-  }
-
-  if (type) {
-    queryObject.type = type;
-  }
-
- 
-  if (numericFilters) {
-    const operatorMap = {
-      "<=": "$lte",
-      "<": "$lt",
-      "=": "$eq",
-      ">": "$gt",
-      ">=": "$gte",
-    };
-
-    const regEx = /(<=|>=|<|>|=)/g;
-
-    let filters = numericFilters.replace(
-      regEx,
-      (match) => `-${operatorMap[match]}-`
-    );
-
-    const options = ["price", "rating"];
-    filters = filters.split(",").forEach((item) => {
-      const [field, operator, value] = item.split("-");
-
-      if (options.includes(field)) {
-        queryObject[field] = { [operator]: Number(value) };
-      }
-    });
-  }
-
-  console.log("queryObject in Chair Controller: ", queryObject);
-
-  let result = Chair.find(queryObject);
+  let result = collection.find(queryObject);
   /* SORTING */
   if (sort) {
     const sortList = sort.split(",").join(" ");
@@ -235,27 +169,41 @@ const getAllChairs = async (req, res) => {
 };
 
 const getFilters = async (req, res) => {
-  const uniqueCompanies = await Sofa.distinct("company");
-  const uniqueColors = await Sofa.distinct("color");
-  const uniqueMaterials = await Sofa.distinct("material")
-  const uniqueTypes = await Sofa.distinct("type")
-  
+  const isSofaRoute = req.path.includes("sofas");
+  const isChairRoute = req.path.includes("chairs");
+
+  let collection;
+
+  if (isSofaRoute) {
+    collection = Sofa;
+  } else if (isChairRoute) {
+    collection = Chair;
+  } else {
+    return res.status(400).json({ message: "Invalid route" });
+  }
+
+  const [uniqueCompanies, uniqueColors, uniqueMaterials, uniqueTypes] =
+    await Promise.all([
+      collection.distinct("company"),
+      collection.distinct("color"),
+      collection.distinct("material"),
+      collection.distinct("type"),
+    ]);
 
   const filterValues = {
     uniqueCompanies,
     uniqueColors,
     uniqueMaterials,
-    uniqueTypes
-  }
+    uniqueTypes,
+  };
 
   res.status(200).json(filterValues);
-}
+};
 
 export {
   getAllProductsStatic,
   getAllProducts,
   getWishlistProducts,
-  getAllSofas,
-  getAllChairs,
-  getFilters
+  getFilteredProducts,
+  getFilters,
 };
