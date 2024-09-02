@@ -3,38 +3,6 @@ export type GetProductsData<T> = {
   nbHits: number;
 };
 
-// export type GetProductFilters = {
-//   featured?: boolean;
-//   company?: "ikea" | "mebeles1" | "caressa" | "marcos";
-//   type?: "sofa" | "table" | "chair";
-//   name?: string;
-//   sort?: string;
-//   fields?: string;
-//   numericFilters?: string;
-//   limit?: number;
-//   page?: number;
-// };
-
-export type GetProductFilters = {
-  featured?: boolean;
-  company?: "ikea" | "mebeles1" | "caressa" | "marcos";
-  type?: "sofa" | "corner-sofa" | "bed";
-  name?: string;
-  color?: string;
-  seat_size?: number;
-  dimensions?: {
-    width: number;
-    height: number;
-    depth: number;
-  };
-  material?: "leather" | "polyester" | "velvet" | "fabric";
-  sort?: string;
-  fields?: string;
-  numericFilters?: string;
-  limit?: number;
-  page?: number;
-};
-
 export type Sofa = {
   _id: string;
   name: string;
@@ -72,13 +40,48 @@ export type Chair = {
   };
   color?: string;
   rating?: number;
-  company?: "ikea" | "mebeles1" | "berry" | "marcos";
+  company: "ikea" | "mebeles1" | "berry" | "marcos";
   image: string;
   createdAt?: Date;
   updatedAt?: Date;
+};
+
+export type GetProductFilters = {
+  featured?: boolean;
+  company?: AllCompanies;
+  type?: AllTypes;
+  name?: string;
+  color?: string;
+  seat_size?: number;
+  dimensions?: {
+    width: number;
+    height: number;
+    depth: number;
+  };
+  material?: AllMaterials;
+  sort?: string;
+  fields?: string;
+  numericFilters?: string;
+  limit?: number;
+  page?: number;
 };
 
 export type AllProductsData = {
   sofas: Sofa[];
   chairs: Chair[];
 };
+
+export type ProductUniqueFilters = {
+  uniqueCompanies?: string[];
+  uniqueColors?: string[];
+  uniqueTypes?: string[];
+  uniqueMaterials?: string[];
+};
+
+type ExtractMaterialType<T> = T extends { material: infer M } ? M : never;
+type ExtractCompanyType<T> = T extends { company: infer M } ? M : never;
+type ExtractTypeType<T> = T extends { type: infer M } ? M : never;
+
+export type AllMaterials = ExtractMaterialType<Sofa> | ExtractMaterialType<Chair>;
+export type AllCompanies = ExtractCompanyType<Sofa> | ExtractCompanyType<Chair>;
+export type AllTypes = ExtractTypeType<Sofa> | ExtractTypeType<Chair>;
