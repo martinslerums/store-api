@@ -2,7 +2,7 @@ import { customApi } from "../api/api";
 import { GetProductsData } from "@/typings/types";
 import { useQuery } from "@tanstack/react-query";
 
-const useGetWishList = () => {
+const useGetWishList = <T extends object>() => {
   const productIds = JSON.parse(localStorage.getItem("likedItems") || "[]");
 
   console.log(productIds)
@@ -15,7 +15,7 @@ const useGetWishList = () => {
         return;
       }
 
-      const { data } = await customApi.post<GetProductsData>(`/products/wishlist`, {
+      const { data } = await customApi.post<GetProductsData<T>>(`/products/wishlist`, {
         productIds,
       });
 
