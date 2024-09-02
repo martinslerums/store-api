@@ -7,21 +7,21 @@ import { Sofa } from "@/typings/types";
 
 const SofasPage = () => {
 
-  const { type, name } = useProductStore();
-  const filters = { type, name };
+  const { type, company, material, color } = useProductStore();
+  const filters = { type, company, material, color };
 
   const { data, isLoading, isError } = useGetProducts<Sofa []>("sofas", filters);
   const { products } = data || {};
 
-  console.log("Data from SofaPAGE", data)
+  console.log("SofaPAGE Data", data)
 
   useEffect(() => {
-    console.log("Component Mounted");
+    console.log("SofaPAGE Mounted");
   }, []);
 
   return (
     <div className="flex justify-center">
-      <div className="max-w-[300px] w-full border border-black">
+      <div className="max-w-[300px] w-full">
         <Filter />
       </div>
       <div className="flex-1 p-4">
