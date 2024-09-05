@@ -1,19 +1,27 @@
-import ProductCard from "@/components/ProductCard";
-import Filter from "@/components/Filter";
-import { useProductStore } from "@/stores/productStore";
 import { useEffect } from "react";
+
+import Filter from "@/components/Filter";
+import ProductCard from "@/components/ProductCard";
+
+import { useProductStore } from "@/stores/productStore";
+
+import useGetFilters from "@/hooks/useGetFilters";
 import useGetProducts from "@/hooks/useGetProducts";
+
 import { Sofa } from "@/typings/types";
 
 const SofasPage = () => {
-
   const { type, company, material, color } = useProductStore();
   const filters = { type, company, material, color };
 
-  const { data, isLoading, isError } = useGetProducts<Sofa []>("sofas", filters);
-  const { products } = data || {};
+  const { data: filterValues } = useGetFilters("sofas");
+  
+  const { data: sofasData, isLoading, isError } = useGetProducts<Sofa []>("sofas", filters);
+  const { products } = sofasData || {};
 
-  console.log("SofaPAGE Data", data)
+
+
+  console.log("SofaPAGE Data", sofasData)
 
   useEffect(() => {
     console.log("SofaPAGE Mounted");
@@ -22,7 +30,7 @@ const SofasPage = () => {
   return (
     <div className="flex justify-center">
       <div className="max-w-[300px] w-full">
-        <Filter />
+        <Filter filterValues={filterValues} />
       </div>
       <div className="flex-1 p-4">
         {isLoading && (
