@@ -1,5 +1,5 @@
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 type FilterSectionProps<T extends string | number> = {
   title: string;
@@ -14,8 +14,8 @@ const FilterSection = <T extends string | number>({
   selectedItem,
   onSelect,
 }: FilterSectionProps<T>) => (
-  <Accordion type="single" collapsible>
-    <AccordionItem value={title}>
+  <Accordion type="single" collapsible className="shadow-sm p-2">
+    <AccordionItem className="border-b-0" value={title}>
       <AccordionTrigger>{title}</AccordionTrigger>
       <AccordionContent className="flex flex-col gap-2">
         {items.map((item) => (
