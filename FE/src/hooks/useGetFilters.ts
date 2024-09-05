@@ -2,11 +2,11 @@ import { ProductUniqueFilters } from "@/typings/types";
 import { customApi } from "../api/api";
 import { useQuery } from "@tanstack/react-query";
 
-const useGetFilters = () => {
+const useGetFilters = (type: string) => {
   return useQuery({
-    queryKey: ["filters"],
+    queryKey: ["filters", type],
     queryFn: async () => {
-      const { data } = await customApi.get<ProductUniqueFilters>(`/products/sofas/filters`);
+      const { data } = await customApi.get<ProductUniqueFilters>(`/products/${type}/filters`);
 
       return data;
     },
