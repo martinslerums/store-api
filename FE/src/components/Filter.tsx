@@ -1,12 +1,19 @@
-import useGetFilters from "@/hooks/useGetFilters";
 import FilterSection from "./FilterSection";
 import { useProductStore } from "@/stores/productStore";
 import { AllCompanies, AllMaterials, AllTypes } from "@/typings/types";
 
-const Filter = () => {
-  const { data } = useGetFilters();
-  const { uniqueCompanies, uniqueColors, uniqueMaterials, uniqueTypes } =
-    data || {};
+type FilterProps = {
+  filterValues?: {
+    uniqueCompanies?: string []
+    uniqueColors?: string []
+    uniqueMaterials?: string []
+    uniqueTypes?: string []
+  }
+}
+
+const Filter = ({filterValues}: FilterProps) => {
+   const { uniqueCompanies, uniqueColors, uniqueMaterials, uniqueTypes } = filterValues || {};
+
 
   const {
     company,
@@ -19,12 +26,8 @@ const Filter = () => {
     setType,
   } = useProductStore();
 
-  const filters = [company, material, color, type]
-
-  console.table(filters);
-
   return (
-    <div className="h-full w-full p-4">
+    <div className="h-full w-full p-4 space-y-4">
       {uniqueCompanies && (
         <FilterSection<AllCompanies>
           title="Ražotājs"
