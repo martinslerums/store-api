@@ -1,28 +1,34 @@
-import ProductCard from "@/components/ProductCard";
-import Filter from "@/components/Filter";
-import { useProductStore } from "@/stores/productStore";
 import { useEffect } from "react";
+
+import Filter from "@/components/Filter";
+import ProductCard from "@/components/ProductCard";
+
+import { useProductStore } from "@/stores/productStore";
+
 import useGetProducts from "@/hooks/useGetProducts";
+import useGetFilters from "@/hooks/useGetFilters";
+
 import { Chair } from "@/typings/types";
 
 const ChairsPage = () => {
+  const { type, company, material, color } = useProductStore();
+  const filters = { type, company, material, color };
 
-  const { type, name } = useProductStore();
-  const filters = { type, name };
+  const { data: filterValues } = useGetFilters("chairs");
 
-  const { data, isLoading, isError } = useGetProducts<Chair []>("chairs", filters);
-  const { products } = data || {};
+  const { data: chairsData, isLoading, isError } = useGetProducts<Chair []>("chairs", filters);
+  const { products } = chairsData || {};
 
-  console.log("Data from ChairsPage", data)
+  console.log("ChairPage Data", chairsData)
 
   useEffect(() => {
-    console.log("Component Mounted");
+    console.log("ChairPage Mounted");
   }, []);
 
   return (
     <div className="flex justify-center">
-      <div className="max-w-[300px] w-full border border-black">
-        <Filter />
+      <div className="max-w-[300px] w-full">
+        <Filter filterValues={filterValues} />
       </div>
       <div className="flex-1 p-4">
         {isLoading && (
