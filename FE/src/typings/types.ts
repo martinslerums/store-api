@@ -46,7 +46,7 @@ export type Chair = {
   updatedAt?: Date;
 };
 
-export type GetProductFilters = {
+export type ProductFilters = {
   featured?: boolean;
   company?: AllCompanies;
   type?: AllTypes;
@@ -72,10 +72,10 @@ export type AllProductsData = {
 };
 
 export type ProductUniqueFilters = {
-  uniqueCompanies?: string[];
+  uniqueCompanies?: AllCompanies[];
+  uniqueTypes?: AllTypes[];
+  uniqueMaterials?: AllMaterials[];
   uniqueColors?: string[];
-  uniqueTypes?: string[];
-  uniqueMaterials?: string[];
 };
 
 type ExtractMaterialType<T> = T extends { material: infer M } ? M : never;
