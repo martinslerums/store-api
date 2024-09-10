@@ -1,13 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
-import { GetProductsData, GetProductFilters } from "@/typings/types";
+import { GetProductsData, ProductFilters } from "@/typings/types";
 import { customApi } from "../api/api";
 
-const useGetProducts = <T extends object>(productType?: string, filters?: GetProductFilters) => {
+const useGetProducts = <T extends object>(productType?: string, filters?: ProductFilters) => {
   const query = new URLSearchParams();
 
   if (filters) {
     Object.keys(filters).forEach((key) => {
-      const value = filters[key as keyof GetProductFilters];
+      const value = filters[key as keyof ProductFilters];
       if (value !== undefined && value !== null) {
         query.append(key, value.toString());
       }
