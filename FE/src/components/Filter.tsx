@@ -1,55 +1,48 @@
+import useProductFilters from "@/hooks/useProductFilters";
 import FilterSection from "./FilterSection";
-import { useProductStore } from "@/stores/productStore";
-import { AllCompanies, AllMaterials, AllTypes } from "@/typings/types";
+import { AllCompanies, AllMaterials, AllTypes, ProductFilters } from "@/typings/types";
 
 type FilterProps = {
   filterValues?: {
-    uniqueCompanies?: string []
-    uniqueColors?: string []
-    uniqueMaterials?: string []
-    uniqueTypes?: string []
-  }
-}
+    uniqueCompanies?: AllCompanies[];
+    uniqueColors?: string[];
+    uniqueMaterials?: AllMaterials[];
+    uniqueTypes?: AllTypes[];
+  };
+};
 
-const Filter = ({filterValues}: FilterProps) => {
-   const { uniqueCompanies, uniqueColors, uniqueMaterials, uniqueTypes } = filterValues || {};
+const Filter = ({ filterValues }: FilterProps) => {
+  const { uniqueCompanies, uniqueColors, uniqueMaterials, uniqueTypes } = filterValues || {};
+  const { company, color, material, type, setFilters } = useProductFilters();
 
-
-  const {
-    company,
-    setCompany,
-    material,
-    setMaterial,
-    color,
-    setColor,
-    type,
-    setType,
-  } = useProductStore();
+  const handleFilterSelect = <T,>(filterKey: keyof ProductFilters, selectedValue: T | undefined) => {
+    setFilters({ [filterKey]: selectedValue });
+  };
 
   return (
-    <div className="h-full w-full p-4 space-y-4">
+    <div className="h-full w-full max-w-60 p-4 space-y-4">
       {uniqueCompanies && (
         <FilterSection<AllCompanies>
           title="Ražotājs"
-          items={uniqueCompanies as AllCompanies[]}
+          items={uniqueCompanies}
           selectedItem={company}
-          onSelect={setCompany}
+          onSelect={(selected) => handleFilterSelect("company", selected)}
         />
       )}
       {uniqueTypes && (
         <FilterSection<AllTypes>
           title="Tips"
-          items={uniqueTypes as AllTypes[]}
+          items={uniqueTypes}
           selectedItem={type}
-          onSelect={setType}
+          onSelect={(selected) => handleFilterSelect("type", selected)}
         />
       )}
       {uniqueMaterials && (
         <FilterSection<AllMaterials>
           title="Materiāls"
-          items={uniqueMaterials as AllMaterials[]}
+          items={uniqueMaterials}
           selectedItem={material}
-          onSelect={setMaterial}
+          onSelect={(selected) => handleFilterSelect("material", selected)}
         />
       )}
       {uniqueColors && (
@@ -57,7 +50,7 @@ const Filter = ({filterValues}: FilterProps) => {
           title="Krāsa"
           items={uniqueColors}
           selectedItem={color}
-          onSelect={setColor}
+          onSelect={(selected) => handleFilterSelect("color", selected)}
         />
       )}
     </div>
