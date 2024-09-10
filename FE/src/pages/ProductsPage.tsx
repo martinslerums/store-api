@@ -1,13 +1,13 @@
 import useGetProducts from "@/hooks/useGetProducts";
-import { useEffect } from "react";
 import { AllProductsData, Chair, Sofa } from "@/typings/types";
 import ProductCard from "@/components/ProductCard";
-import { useProductStore } from "@/stores/productStore";
 import FeaturedCarousel from "@/components/FeaturedCarousel";
 import { Link } from "react-router-dom";
+import useProductFilters from "@/hooks/useProductFilters";
 
 const ProductsPage = () => {
-  const { name } = useProductStore();
+  const { name } = useProductFilters();
+
   const { data, isLoading, isError } = useGetProducts<AllProductsData>(
     undefined,
     { name }
@@ -17,10 +17,6 @@ const ProductsPage = () => {
   const chairs = data?.products.chairs || [];
 
   const searchedProducts = name ? [...sofas, ...chairs] : [];
-
-  useEffect(() => {
-    console.log("Component Mounted Product Page");
-  }, []);
 
   return (
     <div className="container flex justify-center">
@@ -94,36 +90,3 @@ const ProductsPage = () => {
 };
 
 export default ProductsPage;
-
-// import {
-//   Pagination,
-//   PaginationContent,
-//   PaginationItem,
-//   PaginationLink,
-//   PaginationNext,
-//   PaginationPrevious,
-// } from "@/components/ui/pagination";
-
-{
-  /* <div className="p-10">
-              <Pagination>
-                <PaginationContent>
-                  <PaginationItem>
-                    <PaginationPrevious
-                      onClick={handlePreviousPage}
-                      isDisabled={isFirstPage}
-                    />
-                  </PaginationItem>
-                  <PaginationItem>
-                    <PaginationLink>{page}</PaginationLink>
-                  </PaginationItem>
-                  <PaginationItem>
-                    <PaginationNext
-                      onClick={handleNextPage}
-                      isDisabled={isLastPage}
-                    />
-                  </PaginationItem>
-                </PaginationContent>
-              </Pagination>
-            </div> */
-}
