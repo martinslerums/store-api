@@ -7,7 +7,7 @@ const MainLayout = () => {
     <>
       <Contacts />
       <Navbar />
-      <main className="flex-1">
+      <main className="flex-1 container mx-auto">
         <Outlet />
       </main>
     </>
