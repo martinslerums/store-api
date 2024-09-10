@@ -1,6 +1,10 @@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
+import { filtersMap } from "@/maps/filtersMap";
+
+
+
 type FilterSectionProps<T extends string | number> = {
   title: string;
   items: T[];
@@ -24,12 +28,14 @@ const FilterSection = <T extends string | number>({
               htmlFor={`checkbox-${item}`}
               className="flex items-center cursor-pointer"
             >
-              <Checkbox
+              <Checkbox 
+                hideCheck
+                className="h-3 w-3 rounded-full"
                 id={`checkbox-${item}`}
                 checked={selectedItem === item}
                 onCheckedChange={(checked) => onSelect(checked ? item : undefined)}
               />
-              <span className="ml-3">{item}</span>
+              <span className="ml-3 font-semibold">{filtersMap[item] || item}</span>
             </label>
           </div>
         ))}
