@@ -29,7 +29,7 @@ const Navbar = () => {
 
   return (
     <header className="sticky top-0 bg-white z-10 shadow-md">
-      <div >
+      <div>
         <div className="container flex justify-between py-8">
           <div>SOCIAL MEDIA LINKS</div>
 
@@ -46,7 +46,7 @@ const Navbar = () => {
             >
               <CiHeart size={30} />
               {likedCount > 0 && (
-                <span className="absolute -top-1 -right-3 bg-red-500 rounded-full h-5 w-5 text-xs flex items-center justify-center">
+                <span className="absolute -top-1 -right-3 bg-red-400 rounded-full h-5 w-5 text-xs flex items-center justify-center font-bold">
                   {likedCount}
                 </span>
               )}
@@ -62,7 +62,7 @@ const Navbar = () => {
             <NavigationMenuList>
               <NavigationMenuItem>
                 <NavigationMenuTrigger className="cursor-pointer px-4 py-2 rounded-lg transition duration-200 ease-in-out hover:bg-gray-200">
-                  Mēbeles
+                  <Link to='/products'>Mēbeles</Link>
                 </NavigationMenuTrigger>
 
                 <NavigationMenuContent className="flex flex-col px-2 w-full">
@@ -98,21 +98,15 @@ const Navbar = () => {
                   Virtuve
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className="flex flex-col px-2 w-full">
-                  <Link to="#">
                     <NavigationMenuLink className="text-gray-700 hover:underline py-1 text-lg">
                       Documentation
                     </NavigationMenuLink>
-                  </Link>
-                  <Link to="#">
                     <NavigationMenuLink className="text-gray-700 hover:underline py-1 text-lg">
                       Something
                     </NavigationMenuLink>
-                  </Link>
-                  <Link to="#">
                     <NavigationMenuLink className="text-gray-700 hover:underline py-1 text-lg">
                       Something
                     </NavigationMenuLink>
-                  </Link>
                 </NavigationMenuContent>
               </NavigationMenuItem>
             </NavigationMenuList>
