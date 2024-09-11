@@ -67,3 +67,26 @@
     @apply bg-background text-foreground;
   }
 }
+
+/*SLIDER STYLES*/
+
+.rc-slider .rc-slider-track {
+  background-color: black !important; 
+}
+
+.rc-slider .rc-slider-rail {
+  background-color: #333 !important;
+}
+
+.rc-slider .rc-slider-handle {
+  border-color: black !important; 
+  background-color: black !important; 
+}
+
+.rc-slider .rc-slider-handle:hover,
+.rc-slider .rc-slider-handle:focus,
+.rc-slider .rc-slider-handle:active {
+  border-color: black !important;
+  box-shadow: none !important;
+}
+
