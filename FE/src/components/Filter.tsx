@@ -1,6 +1,12 @@
 import useProductFilters from "@/hooks/useProductFilters";
 import FilterSection from "./FilterSection";
-import { AllCompanies, AllMaterials, AllTypes, ProductFilters } from "@/typings/types";
+import {
+  AllCompanies,
+  AllMaterials,
+  AllTypes,
+  ProductFilters,
+} from "@/typings/types";
+import SliderFilter from "./SliderFilter";
 
 type FilterProps = {
   filterValues?: {
@@ -12,11 +18,39 @@ type FilterProps = {
 };
 
 const Filter = ({ filterValues }: FilterProps) => {
-  const { uniqueCompanies, uniqueColors, uniqueMaterials, uniqueTypes } = filterValues || {};
+  const { uniqueCompanies, uniqueColors, uniqueMaterials, uniqueTypes } =
+    filterValues || {};
   const { company, color, material, type, setFilters } = useProductFilters();
 
-  const handleFilterSelect = <T,>(filterKey: keyof ProductFilters, selectedValue: T | undefined) => {
-    setFilters({ [filterKey]: selectedValue });
+  const handleFilterSelect = (
+    filterKey: keyof ProductFilters,
+    item: string,
+    isChecked: boolean
+  ) => {
+    let currentValues: string[] = [];
+
+    switch (filterKey) {
+      case "company":
+        currentValues = company as AllCompanies[];
+        break;
+      case "color":
+        currentValues = color as string[];
+        break;
+      case "material":
+        currentValues = material as AllMaterials[];
+        break;
+      case "type":
+        currentValues = type as AllTypes[];
+        break;
+      default:
+        break;
+    }
+
+    const updatedValues = isChecked
+      ? [...currentValues, item]
+      : currentValues.filter((value) => value !== item);
+
+    setFilters({ [filterKey]: updatedValues });
   };
 
   return (
@@ -25,34 +59,45 @@ const Filter = ({ filterValues }: FilterProps) => {
         <FilterSection<AllCompanies>
           title="Ražotājs"
           items={uniqueCompanies}
-          selectedItem={company}
-          onSelect={(selected) => handleFilterSelect("company", selected)}
+          selectedOptions={company || []}
+          onSelect={(item, isChecked) =>
+            handleFilterSelect("company", item, isChecked)
+          }
         />
       )}
       {uniqueTypes && (
         <FilterSection<AllTypes>
           title="Tips"
           items={uniqueTypes}
-          selectedItem={type}
-          onSelect={(selected) => handleFilterSelect("type", selected)}
+          selectedOptions={type || []}
+          onSelect={(item, isChecked) =>
+            handleFilterSelect("type", item, isChecked)
+          }
         />
       )}
       {uniqueMaterials && (
         <FilterSection<AllMaterials>
           title="Materiāls"
           items={uniqueMaterials}
-          selectedItem={material}
-          onSelect={(selected) => handleFilterSelect("material", selected)}
+          selectedOptions={material || []}
+          onSelect={(item, isChecked) =>
+            handleFilterSelect("material", item, isChecked)
+          }
         />
       )}
       {uniqueColors && (
         <FilterSection<string>
           title="Krāsa"
           items={uniqueColors}
-          selectedItem={color}
-          onSelect={(selected) => handleFilterSelect("color", selected)}
+          selectedOptions={color || []}
+          onSelect={(item, isChecked) =>
+            handleFilterSelect("color", item, isChecked)
+          }
         />
       )}
+      <SliderFilter 
+        title="Cena"
+      />
     </div>
   );
 };
