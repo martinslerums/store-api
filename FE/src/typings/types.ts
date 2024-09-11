@@ -48,17 +48,17 @@ export type Chair = {
 
 export type ProductFilters = {
   featured?: boolean;
-  company?: AllCompanies;
-  type?: AllTypes;
+  company?: AllCompanies [];
+  type?: AllTypes [];
   name?: string;
-  color?: string;
+  color?: string [];
   seat_size?: number;
   dimensions?: {
     width: number;
     height: number;
     depth: number;
   };
-  material?: AllMaterials;
+  material?: AllMaterials [];
   sort?: string;
   fields?: string;
   numericFilters?: string;
