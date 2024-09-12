@@ -8,8 +8,8 @@ import useProductFilters  from "@/hooks/useProductFilters";
 import { Sofa } from "@/typings/types";
 
 const SofasPage = () => {
-  const { type, company, material, color } = useProductFilters();
-  const filters = { type, company, material, color };
+  const { type, company, material, color, price } = useProductFilters();
+  const filters = { type, company, material, color, price };
 
   const { data: filterValues } = useGetFilters("sofas");
 

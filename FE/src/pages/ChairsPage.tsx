@@ -9,9 +9,9 @@ import useProductFilters from "@/hooks/useProductFilters";
 import { Chair } from "@/typings/types";
 
 const ChairsPage = () => {
-  const { type, company, material, color } = useProductFilters();
+  const { type, company, material, color, price } = useProductFilters();
 
-  const filters = { type, company, material, color };
+  const filters = { type, company, material, color, price };
 
   const { data: filterValues } = useGetFilters("chairs");
 
