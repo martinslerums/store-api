@@ -1,6 +1,6 @@
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Input } from "./ui/input";
 import {
   Accordion,
@@ -8,26 +8,67 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "./ui/accordion";
+import useProductFilters from "@/hooks/useProductFilters";
+import { useDebounce } from "@/hooks/useDebounce";
 
 type SliderFilterProps = {
   title: string;
 };
 
 const SliderFilter = ({ title }: SliderFilterProps) => {
-  const [sliderValues, setSliderValues] = useState([0, 10000]);
+  const [sliderValues, setSliderValues] = useState<[number, number]>([0, 10000]);
+  const [tempValues, setTempValues] = useState<[string, string]>(["0", "10000"]);
+  const { setFilters } = useProductFilters();
 
-  const handleChange = (newValue) => {
-    setSliderValues(newValue);
+  const debouncedPriceRange = useDebounce(sliderValues, 1000);
+
+  useEffect(() => {
+    const [min, max] = debouncedPriceRange;
+    const filters: { price?: string[] } = {};
+
+    if (min > 0 || max < 10000) {
+      filters.price = [];
+      if (min > 0) filters.price.push(`gte-${min}`);
+      if (max < 10000) filters.price.push(`lte-${max}`);
+    }
+
+    if (filters.price) {
+      setFilters(filters);
+    } 
+  }, [debouncedPriceRange, setFilters]);
+
+  useEffect(() => {
+    setTempValues([sliderValues[0].toString(), sliderValues[1].toString()]);
+  }, [sliderValues]);
+
+  const handleChange = (newValue: number | number[]) => {
+    setSliderValues(newValue as [number, number]);
   };
 
-  const handleLowerInputChange = (e) => {
-    const value = parseInt(e.target.value, 10) || 0;
-    setSliderValues([Math.min(value, sliderValues[1]), sliderValues[1]]);
+  const handleKeyDown = (
+    event: React.KeyboardEvent<HTMLInputElement>,
+    index: number
+  ) => {
+    if (event.key === "Enter") {
+      const inputValue = parseInt(tempValues[index], 10) || 0;
+      const newValues = [...sliderValues];
+
+      if (index === 0) {
+        newValues[0] = Math.min(inputValue, sliderValues[1]);
+      } else {
+        newValues[1] = Math.max(inputValue, sliderValues[0]);
+      }
+
+      setSliderValues(newValues as [number, number]);
+    }
   };
 
-  const handleUpperInputChange = (e) => {
-    const value = parseInt(e.target.value, 10) || 0;
-    setSliderValues([sliderValues[0], Math.max(value, sliderValues[0])]);
+  const handleInputChange = (value: string, index: number) => {
+    setTempValues((prevValues) => {
+      const newValues = [...prevValues];
+      newValues[index] = value;
+      return newValues as [string, string];
+    });
   };
 
   return (
@@ -40,10 +81,9 @@ const SliderFilter = ({ title }: SliderFilterProps) => {
               <Input
                 className="max-w-16 focus-visible:ring-0 focus-visible:ring-offset-0 font-semibold"
                 type="text"
-                value={sliderValues[0]}
-                onChange={handleLowerInputChange}
-                min={0}
-                max={sliderValues[1]}
+                value={tempValues[0]}
+                onChange={(e) => handleInputChange(e.target.value, 0)}
+                onKeyDown={(e) => handleKeyDown(e, 0)}
               />
               <span className="font-semibold text-lg text-nowrap">€ -</span>
             </div>
@@ -51,17 +91,14 @@ const SliderFilter = ({ title }: SliderFilterProps) => {
               <Input
                 className="max-w-16 focus-visible:ring-0 focus-visible:ring-offset-0 font-semibold"
                 type="text"
-                value={sliderValues[1]}
-                onChange={handleUpperInputChange}
-                min={sliderValues[0]}
-                max={10000}
+                value={tempValues[1]}
+                onChange={(e) => handleInputChange(e.target.value, 1)}
+                onKeyDown={(e) => handleKeyDown(e, 1)}
               />
               <span className="font-semibold text-lg text-nowrap">€</span>
             </div>
           </div>
           <Slider
-          
-          
             allowCross={false}
             range
             min={0}
