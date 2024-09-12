@@ -4,15 +4,14 @@ import mongoose from "mongoose";
 
 //For testing purposes with Static data ( hard-coded )
 const getAllProductsStatic = async (req, res) => {
-  const uniqueCompanies = await Sofa.distinct("company");
-  const uniqueColors = await Sofa.distinct("color");
+  const products = await Sofa.find({ price: { '$gte': 500, '$lte': 1000 } }).select("name price");
 
-  const filterValues = {
-    uniqueCompanies,
-    uniqueColors,
-  };
 
-  res.status(200).json(filterValues);
+  res.status(200).json({
+    success: true,
+    products: products,
+    nbHits: products.length,
+  });
 };
 
 const getAllProducts = async (req, res) => {
@@ -88,51 +87,56 @@ const getFilteredProducts = async (req, res) => {
     return res.status(400).json({ message: "Invalid route" });
   }
 
-  const { company, type, material, color, sort, fields, numericFilters } =
+  const { company, type, material, color, sort, fields, price } =
     req.query;
 
   const queryObject = {};
 
   if (company) {
-    queryObject.company = company;
+    const companyArray = company.split(',');
+    queryObject.company = { $in: companyArray }; 
   }
 
   if (type) {
-    queryObject.type = type;
+    const typeArray = type.split(',');
+    queryObject.type = { $in: typeArray };
   }
 
   if (material) {
-    queryObject.material = material;
+    const materialArray = material.split(',');
+    queryObject.material = { $in: materialArray };
   }
 
   if (color) {
-    queryObject.color = color;
+    const colorArray = color.split(',');
+    queryObject.color = { $in: colorArray };
   }
 
-  if (numericFilters) {
+  if (price) {
+     
     const operatorMap = {
-      "<=": "$lte",
-      "<": "$lt",
-      "=": "$eq",
-      ">": "$gt",
-      ">=": "$gte",
+      "lte": "$lte",
+      "eq": "$eq",
+      "gte": "$gte",
     };
 
-    const regEx = /(<=|>=|<|>|=)/g;
+      const regEx = /(lte|eq|gte)/g;
 
-    let filters = numericFilters.replace(
-      regEx,
-      (match) => `-${operatorMap[match]}-`
-    );
-
-    const options = ["price", "rating"];
-    filters = filters.split(",").forEach((item) => {
-      const [field, operator, value] = item.split("-");
-
-      if (options.includes(field)) {
-        queryObject[field] = { [operator]: Number(value) };
-      }
-    });
+      let filters = price.replace(regEx, (match) => `${operatorMap[match]}`);
+      
+     console.log("After Filters: ", filters)
+     
+     
+      filters.split(",").forEach((item) => {
+        const [operator, value] = item.split("-");
+         console.log("Split operator: ", operator)
+         console.log("Split value: ", value)
+        
+        if (operator && value) {
+          queryObject.price = queryObject.price || {};
+          queryObject.price[operator] = Number(value);
+        }
+      });
   }
 
   console.log("queryObject in FilteredProducts Controller: ", queryObject);
