@@ -81,6 +81,7 @@
 .rc-slider .rc-slider-handle {
   border-color: black !important; 
   background-color: black !important; 
+  opacity: 1;
 }
 
 .rc-slider .rc-slider-handle:hover,
