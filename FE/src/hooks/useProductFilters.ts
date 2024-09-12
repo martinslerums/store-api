@@ -12,6 +12,7 @@ const useProductFilters = () => {
 
   const filters: ProductFilters = {
     name: searchParams.get("name") as ProductFilters["name"],
+    price: getCommaSeparatedValues("price") as ProductFilters["price"],
     company: getCommaSeparatedValues("company") as ProductFilters["company"],
     color: getCommaSeparatedValues("color") as ProductFilters["color"],
     material: getCommaSeparatedValues("material") as ProductFilters["material"],
@@ -26,10 +27,8 @@ const useProductFilters = () => {
         });
 
         Object.entries(filters).forEach(([key, value]) => {
-          if (Array.isArray(value)) {
-            if (value.length > 0) {
+          if (Array.isArray(value) && value.length > 0) {
               params.set(key, value.join(","));
-            }
           } else if (value !== undefined && value !== null) {
             params.set(key, String(value));
           }
