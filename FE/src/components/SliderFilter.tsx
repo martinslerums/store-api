@@ -16,26 +16,29 @@ type SliderFilterProps = {
 };
 
 const SliderFilter = ({ title }: SliderFilterProps) => {
+
   const [sliderValues, setSliderValues] = useState<[number, number]>([0, 10000]);
   const [tempValues, setTempValues] = useState<[string, string]>(["0", "10000"]);
-  const { setFilters } = useProductFilters();
+
+  const { setFilters, removeFilters } = useProductFilters();
 
   const debouncedPriceRange = useDebounce(sliderValues, 1000);
 
   useEffect(() => {
+    //TODO: Iznest šo kā funckniju un padot, kā arī padot padot 0 un 10000 kā propus.
     const [min, max] = debouncedPriceRange;
     const filters: { price?: string[] } = {};
-
+  
     if (min > 0 || max < 10000) {
       filters.price = [];
       if (min > 0) filters.price.push(`gte-${min}`);
       if (max < 10000) filters.price.push(`lte-${max}`);
-    }
-
-    if (filters.price) {
+      
       setFilters(filters);
-    } 
-  }, [debouncedPriceRange, setFilters]);
+    } else {
+      removeFilters({ price: [] });
+    }
+  }, [debouncedPriceRange, setFilters, removeFilters]);
 
   useEffect(() => {
     setTempValues([sliderValues[0].toString(), sliderValues[1].toString()]);
@@ -45,12 +48,9 @@ const SliderFilter = ({ title }: SliderFilterProps) => {
     setSliderValues(newValue as [number, number]);
   };
 
-  const handleKeyDown = (
-    event: React.KeyboardEvent<HTMLInputElement>,
-    index: number
-  ) => {
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>, index: number) => {
     if (event.key === "Enter") {
-      const inputValue = parseInt(tempValues[index], 10) || 0;
+      const inputValue = parseInt(tempValues[index]) || 0;
       const newValues = [...sliderValues];
 
       if (index === 0) {
