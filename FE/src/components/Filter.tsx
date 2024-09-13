@@ -22,11 +22,7 @@ const Filter = ({ filterValues }: FilterProps) => {
     filterValues || {};
   const { company, color, material, type, setFilters } = useProductFilters();
 
-  const handleFilterSelect = (
-    filterKey: keyof ProductFilters,
-    item: string,
-    isChecked: boolean
-  ) => {
+  const handleFilterSelect = ( filterKey: keyof ProductFilters,item: string,isChecked: boolean) => {
     let currentValues: string[] = [];
 
     switch (filterKey) {
