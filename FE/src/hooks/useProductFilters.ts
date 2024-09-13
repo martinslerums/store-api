@@ -40,7 +40,20 @@ const useProductFilters = () => {
     [setSearchParams]
   );
 
-  return { ...filters, setFilters };
+  const removeFilters = useCallback(
+    (filters: Partial<ProductFilters>) => {
+      setSearchParams((params) => {
+        Object.keys(filters).forEach((key) => {
+          params.delete(key);
+        });
+       
+        return params;
+      });
+    },
+    [setSearchParams]
+  );
+
+  return { ...filters, setFilters, removeFilters};
 };
 
 export default useProductFilters;
