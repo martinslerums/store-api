@@ -61,7 +61,7 @@ export type ProductFilters = {
   material?: AllMaterials [];
   sort?: string;
   fields?: string;
-  numericFilters?: string;
+  price?: string [];
   limit?: number;
   page?: number;
 };
