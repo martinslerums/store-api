@@ -5,8 +5,6 @@ import { useQuery } from "@tanstack/react-query";
 const useGetWishList = <T extends object>() => {
   const productIds = JSON.parse(localStorage.getItem("likedItems") || "[]");
 
-  console.log(productIds)
-
   return useQuery({
     queryKey: ["wishlist", productIds],
     queryFn: async () => {
