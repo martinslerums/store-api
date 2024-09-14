@@ -14,6 +14,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import SocialMedia from "./SocialMedia";
 
 const Navbar = () => {
   const { likedItems, initializeLikedItems } = useWishlistStore();
@@ -30,8 +31,8 @@ const Navbar = () => {
   return (
     <header className="sticky top-0 bg-white z-10 shadow-md">
       <div>
-        <div className="container flex justify-between py-8">
-          <div>SOCIAL MEDIA LINKS</div>
+        <div className="container flex justify-between py-8 items-center">
+          <SocialMedia />
 
           <Link to="/" className="flex items-center">
             <img src={shopLogo} alt="Logo" className="h-10 w-auto" />
