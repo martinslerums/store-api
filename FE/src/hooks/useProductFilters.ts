@@ -17,23 +17,26 @@ const useProductFilters = () => {
     color: getCommaSeparatedValues("color") as ProductFilters["color"],
     material: getCommaSeparatedValues("material") as ProductFilters["material"],
     type: getCommaSeparatedValues("type") as ProductFilters["type"],
+    page: Number(searchParams.get("page")) as ProductFilters["page"] || 1,
   };
 
   const setFilters = useCallback(
     (filters: Partial<ProductFilters>) => {
       setSearchParams((params) => {
-        Object.keys(filters).forEach((key) => {
-          params.delete(key);
-        });
-
         Object.entries(filters).forEach(([key, value]) => {
-          if (Array.isArray(value) && value.length > 0) {
-              params.set(key, value.join(","));
-          } else if (value !== undefined && value !== null) {
-            params.set(key, String(value));
+          if (value === undefined || value === null || (Array.isArray(value) && value.length === 0)) {
+            params.delete(key);
+            return;
           }
+        
+          if (Array.isArray(value)) {
+            params.set(key, value.join(","));
+            return;
+          }
+        
+          params.set(key, String(value));
         });
-
+        
         return params;
       });
     },
