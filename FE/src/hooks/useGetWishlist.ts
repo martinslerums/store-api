@@ -10,7 +10,7 @@ const useGetWishList = <T extends object>() => {
     queryFn: async () => {
       
       if (productIds.length === 0) {
-        return;
+        return { products: [], nbHits: 0 }; 
       }
 
       const { data } = await customApi.post<GetProductsData<T>>(`/products/wishlist`, {
