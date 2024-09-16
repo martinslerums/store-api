@@ -41,39 +41,6 @@ const getAllProducts = async (req, res) => {
   });
 };
 
-const getWishlistProducts = async (req, res) => {
-  const { productIds } = req.body;
-
-  if (
-    !Array.isArray(productIds) ||
-    productIds.some((id) => !mongoose.Types.ObjectId.isValid(id))
-  ) {
-    return res
-      .status(400)
-      .json({ success: false, error: "Invalid productIds" });
-  }
-
-  if (productIds.length > 100) {
-    return res
-      .status(400)
-      .json({ success: false, error: "Too many productIds" });
-  }
-
-  const [sofas, chairs] = await Promise.all([
-    Sofa.find({ _id: { $in: productIds } }).lean(),
-    Chair.find({ _id: { $in: productIds } }).lean(),
-  ]);
-
-  const products = [...sofas, ...chairs];
-
-  console.log(`Product IDs requested: ${productIds.join(", ")}`);
-
-  res.status(200).json({
-    success: true,
-    data: { products, nbHits: products.length },
-  });
-};
-
 const getFilteredProducts = async (req, res) => {
   const isSofaRoute = req.path.includes("sofas");
   const isChairRoute = req.path.includes("chairs");
@@ -134,6 +101,7 @@ const getFilteredProducts = async (req, res) => {
   }
 
   console.log("queryObject in FilteredProducts Controller: ", queryObject);
+  const totalRecords = await collection.countDocuments(queryObject);
 
   let result = collection.find(queryObject);
   /* SORTING */
@@ -152,12 +120,45 @@ const getFilteredProducts = async (req, res) => {
 
   /* LIMIT (products returns) SKIP (skips products for pagination) */
   const page = Number(req.query.page) || 1;
-  const limit = Number(req.query.limit) || 100;
+  const limit = Number(req.query.limit) || 12;
   const skip = (page - 1) * limit;
 
   result = result.skip(skip).limit(limit);
 
   const products = await result;
+
+  res.status(200).json({
+    success: true,
+    products: products,
+    nbHits: products.length,
+    total: totalRecords
+  });
+};
+
+const getWishlistProducts = async (req, res) => {
+  const { productIds } = req.body;
+
+  if (
+    !Array.isArray(productIds) ||
+    productIds.some((id) => !mongoose.Types.ObjectId.isValid(id))
+  ) {
+    return res
+      .status(400)
+      .json({ success: false, error: "Invalid productIds" });
+  }
+
+  if (productIds.length > 100) {
+    return res
+      .status(400)
+      .json({ success: false, error: "Too many productIds" });
+  }
+
+  const [sofas, chairs] = await Promise.all([
+    Sofa.find({ _id: { $in: productIds } }).lean(),
+    Chair.find({ _id: { $in: productIds } }).lean(),
+  ]);
+
+  const products = [...sofas, ...chairs];
 
   res.status(200).json({
     success: true,
