@@ -1,6 +1,7 @@
 export type GetProductsData<T> = {
   products: T;
   nbHits: number;
+  total: number;
 };
 
 export type Sofa = {
