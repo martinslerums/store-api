@@ -1,6 +1,6 @@
 import Filter from "@/components/Filter";
+import Pagination from "@/components/Pagination";
 import ProductCard from "@/components/ProductCard";
-
 
 import useGetFilters from "@/hooks/useGetFilters";
 import useGetProducts from "@/hooks/useGetProducts";
@@ -9,9 +9,8 @@ import useProductFilters from "@/hooks/useProductFilters";
 import { Chair } from "@/typings/types";
 
 const ChairsPage = () => {
-  const { type, company, material, color, price } = useProductFilters();
-
-  const filters = { type, company, material, color, price };
+  const { type, company, material, color, price, page } = useProductFilters();
+  const filters = { type, company, material, color, price, page };
 
   const { data: filterValues } = useGetFilters("chairs");
 
@@ -21,10 +20,13 @@ const ChairsPage = () => {
     isError,
   } = useGetProducts<Chair[]>("chairs", filters);
 
+  const totalProductCount = chairsData?.total ?? 0;
+  const totalPages = totalProductCount ? Math.ceil(totalProductCount / 12) : 0;
+
   const { products } = chairsData || {};
 
   return (
-    <div className="flex justify-center">
+    <div className="flex flex-col justify-center">
       <div className="flex w-full max-w-screen-xl">
         <Filter filterValues={filterValues} />
 
@@ -54,6 +56,7 @@ const ChairsPage = () => {
                   ))}
                 </div>
               )}
+              {totalProductCount > 0 && <Pagination totalPages={totalPages} />}
             </div>
           )}
         </div>
