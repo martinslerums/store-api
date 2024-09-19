@@ -12,6 +12,8 @@ productRouter.route("/chairs").get(getFilteredProducts);
 productRouter.route("/chairs/filters").get(getFilters); 
 
 productRouter.route("/wishlist").post(getWishlistProducts);
+productRouter.route("/cart").post(getWishlistProducts); // Can use same controller for now since it does one thing - fines products based on ids provided within an array
+
 
 
 
