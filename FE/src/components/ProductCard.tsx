@@ -8,6 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import WishlistHart from "./WishlistHart";
+import AddItemCart from "./AddItemCart";
 
 type ProductCardProps = {
   product: Sofa | Chair;
@@ -88,26 +89,29 @@ const ProductCard = ({ product, variant = "default" }: ProductCardProps) => {
             <WishlistHart id={product._id} />
           </>
         ) : (
-          <>
-            <span
-              className={`text-lg ${
-                isCarousel ? "sm:text-base" : "font-semibold"
-              } text-gray-800`}
-            >
-              ${product.price}
-            </span>
-            <span className="text-yellow-500 flex items-center">
-              {product.rating}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-                className="w-5 h-5 ml-1"
+          <div className="flex flex-col">
+            <div>
+              <span
+                className={`text-lg ${
+                  isCarousel ? "sm:text-base" : "font-semibold"
+                } text-gray-800`}
               >
-                <path d="M12 17.27L18.18 21 16.54 13.97 22 9.24 14.81 8.63 12 2 9.19 8.63 2 9.24 7.46 13.97 5.82 21 12 17.27z" />
-              </svg>
-            </span>
-          </>
+                ${product.price}
+              </span>
+              <span className="text-yellow-500 flex items-center">
+                {product.rating}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  className="w-5 h-5 ml-1"
+                >
+                  <path d="M12 17.27L18.18 21 16.54 13.97 22 9.24 14.81 8.63 12 2 9.19 8.63 2 9.24 7.46 13.97 5.82 21 12 17.27z" />
+                </svg>
+              </span>
+            </div>
+            <AddItemCart id={product._id} />
+          </div>
         )}
       </CardFooter>
     </Card>
