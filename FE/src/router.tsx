@@ -9,6 +9,7 @@ import ChairsPage from "./pages/ChairsPage.tsx";
 import NotFoundPage from "./pages/NotFoundPage.tsx";
 import WishListPage from "./pages/WishListPage.tsx";
 import ProductsPage from "./pages/ProductsPage.tsx";
+import RegisterPage from "./pages/RegisterPage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -35,10 +36,15 @@ const router = createBrowserRouter([
       {
         path: "/wishlist",
         element: <WishListPage />,
-      }, {
+      }, 
+      {
         path: "/cart",
         element: <CartPage />,
       },
+      {
+        path: "/register",
+        element: <RegisterPage />
+      }
     ],
   },
 ]);
