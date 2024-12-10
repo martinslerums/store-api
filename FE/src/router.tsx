@@ -41,12 +41,12 @@ const router = createBrowserRouter([
         path: "/cart",
         element: <CartPage />,
       },
-      {
-        path: "/register",
-        element: <RegisterPage />
-      }
     ],
   },
+  {
+    path: "/register",
+    element: <RegisterPage />
+  }
 ]);
 
 export default router;
